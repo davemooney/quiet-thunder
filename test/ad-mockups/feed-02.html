@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ad Feed Mockup — Feed 02</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #111;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+  .feed {
+    max-width: 600px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .ad-card {
+    background: #1a1a1a;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .ad-meta {
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .ad-avatar {
+    width: 36px;
+    height: 36px;
+    background: #2a2a2a;
+    border-radius: 50%;
+  }
+  .ad-meta-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .ad-sponsor {
+    font-size: 13px;
+    font-weight: 600;
+    color: #e0e0e0;
+  }
+  .ad-tag {
+    font-size: 11px;
+    color: #666;
+  }
+  .ad-body {
+    padding: 0 16px 12px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #b0b0b0;
+  }
+  .ad-image {
+    width: 100%;
+    aspect-ratio: 1200 / 628;
+    background: #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ad-image-text {
+    font-size: 28px;
+    font-weight: 700;
+    color: #e0e0e0;
+    text-align: center;
+    padding: 0 40px;
+    line-height: 1.3;
+  }
+  .ad-footer {
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #2a2a2a;
+  }
+  .ad-headline {
+    font-size: 15px;
+    font-weight: 700;
+    color: #e0e0e0;
+  }
+  .ad-cta {
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #e0e0e0;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    cursor: pointer;
+  }
+  .feed-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #444;
+    text-align: center;
+    padding: 10px 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- Feed 2: 4 anonymised ads -->
+
+<div class="feed">
+
+  <div class="feed-label">Sponsored Content Feed</div>
+
+  <!-- Ad 1 -->
+  <div class="ad-card">
+    <div class="ad-meta">
+      <div class="ad-avatar"></div>
+      <div class="ad-meta-text">
+        <div class="ad-sponsor">Advertiser 1</div>
+        <div class="ad-tag">Sponsored</div>
+      </div>
+    </div>
+    <div class="ad-body">Never take meeting notes again. Get a meeting assistant that records audio, writes notes, captures slides, and generates summaries. Start for free.</div>
+    <div class="ad-image">
+      <div class="ad-image-text">Turn meetings into transcripts</div>
+    </div>
+    <div class="ad-footer">
+      <div class="ad-headline">The fastest meeting transcription</div>
+      <div class="ad-cta">Start for free</div>
+    </div>
+  </div>
+
+  <!-- Ad 2 -->
+  <div class="ad-card">
+    <div class="ad-meta">
+      <div class="ad-avatar"></div>
+      <div class="ad-meta-text">
+        <div class="ad-sponsor">Advertiser 2</div>
+        <div class="ad-tag">Sponsored</div>
+      </div>
+    </div>
+    <div class="ad-body">Never worry about missing details again. Captures audio locally and transcribes on-device. No setup, no bot, no stress.</div>
+    <div class="ad-image">
+      <div class="ad-image-text">Record everything.</div>
+    </div>
+    <div class="ad-footer">
+      <div class="ad-headline">Capture every word, on your device</div>
+      <div class="ad-cta">Download free</div>
+    </div>
+  </div>
+
+  <!-- Ad 3 -->
+  <div class="ad-card">
+    <div class="ad-meta">
+      <div class="ad-avatar"></div>
+      <div class="ad-meta-text">
+        <div class="ad-sponsor">Advertiser 3</div>
+        <div class="ad-tag">Sponsored</div>
+      </div>
+    </div>
+    <div class="ad-body">Records directly from your device. No meeting participant added. No notification sent. Invisible, local, private.</div>
+    <div class="ad-image">
+      <div class="ad-image-text">No bot joins your call.</div>
+    </div>
+    <div class="ad-footer">
+      <div class="ad-headline">Invisible local recording</div>
+      <div class="ad-cta">Try it free</div>
+    </div>
+  </div>
+
+  <!-- Ad 4 -->
+  <div class="ad-card">
+    <div class="ad-meta">
+      <div class="ad-avatar"></div>
+      <div class="ad-meta-text">
+        <div class="ad-sponsor">Advertiser 4</div>
+        <div class="ad-tag">Sponsored</div>
+      </div>
+    </div>
+    <div class="ad-body">AI-powered noise cancellation, real-time transcription, and meeting notes. Works with every conferencing platform. Trusted by professionals worldwide.</div>
+    <div class="ad-image">
+      <div class="ad-image-text">Voice AI for meetings</div>
+    </div>
+    <div class="ad-footer">
+      <div class="ad-headline">AI meeting assistant for teams</div>
+      <div class="ad-cta">Get started</div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
