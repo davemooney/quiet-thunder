@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>undertone — hear everything, expose nothing</title>
+  <meta name="description" content="undertone transcribes on your device. Your audio never reaches a server. No bot joins your meeting. The intelligence happens here, on your machine, in silence.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=Space+Mono:wght@400;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* ========================================
+       RESET & BASE
+       ======================================== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #161616;
+      color: #E8E8E8;
+      line-height: 1.7;
+      font-size: 16px;
+      font-weight: 400;
+      overflow-x: hidden;
+    }
+
+    /* ========================================
+       TOKENS
+       ======================================== */
+    :root {
+      --dark-base: #161616;
+      --surface-1: #1C1C1C;
+      --surface-2: #232323;
+      --surface-3: #2A2A2A;
+      --border: #2A2A2A;
+      --slate: #444444;
+      --copper: #C47D3B;
+      --copper-mid: #8A6540;
+      --copper-highlight: #E0A86A;
+      --text-primary: #E8E8E8;
+      --text-secondary: #999999;
+      --text-tertiary: #5A5A5A;
+      --max-width: 1080px;
+      --nav-height: 64px;
+    }
+
+    /* ========================================
+       TYPOGRAPHY
+       ======================================== */
+    h1, h2, h3 {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--text-primary);
+    }
+
+    h1 { font-size: clamp(36px, 5vw, 56px); }
+    h2 { font-size: clamp(28px, 3.5vw, 42px); }
+    h3 { font-size: clamp(20px, 2.5vw, 26px); }
+
+    p {
+      color: var(--text-secondary);
+      max-width: 640px;
+    }
+
+    .mono {
+      font-family: 'Space Mono', monospace;
+    }
+
+    .wordmark {
+      font-family: 'Crimson Pro', serif;
+      font-weight: 400;
+      font-size: 20px;
+      color: var(--text-primary);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+
+    /* ========================================
+       LAYOUT
+       ======================================== */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    section {
+      padding: 120px 0;
+      position: relative;
+    }
+
+    section::after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+
+    .section-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      color: var(--copper);
+      margin-bottom: 32px;
+      letter-spacing: 0.05em;
+    }
+
+    .section-body {
+      margin-top: 24px;
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    /* ========================================
+       BUTTONS
+       ======================================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--copper);
+      color: var(--dark-base);
+    }
+
+    .btn-primary:hover {
+      background: var(--copper-highlight);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--slate);
+      background: var(--surface-1);
+    }
+
+    /* ========================================
+       NAVIGATION
+       ======================================== */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(22, 22, 22, 0.9);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      height: var(--nav-height);
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 32px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-left svg {
+      flex-shrink: 0;
+    }
+
+    .nav-btn {
+      padding: 8px 20px;
+      font-size: 14px;
+    }
+
+    /* ========================================
+       HERO
+       ======================================== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding-top: var(--nav-height);
+    }
+
+    .hero-content {
+      max-width: 720px;
+    }
+
+    .hero-icon {
+      margin-bottom: 48px;
+    }
+
+    .hero h1 {
+      margin-bottom: 28px;
+    }
+
+    .hero h1 span {
+      display: block;
+    }
+
+    .hero .subheadline {
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      max-width: 560px;
+      margin: 0 auto 40px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .hero-meta {
+      font-size: 13px;
+      color: var(--text-tertiary);
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    /* ========================================
+       ARCHITECTURE (01)
+       ======================================== */
+    .architecture-visual {
+      margin-top: 48px;
+      display: flex;
+      align-items: stretch;
+      gap: 2px;
+      height: 200px;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .arch-block {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      color: var(--text-secondary);
+      text-align: center;
+      padding: 16px;
+      line-height: 1.5;
+    }
+
+    .arch-device {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      flex: 2;
+    }
+
+    .arch-wall {
+      background: var(--surface-1);
+      flex: 0.3;
+      position: relative;
+    }
+
+    .arch-wall::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      background: repeating-linear-gradient(
+        to bottom,
+        var(--copper) 0px,
+        var(--copper) 4px,
+        transparent 4px,
+        transparent 12px
+      );
+      opacity: 0.4;
+      transform: translateX(-50%);
+    }
+
+    .arch-cloud {
+      background: var(--surface-1);
+      flex: 1;
+      opacity: 0.4;
+    }
+
+    .arch-label {
+      display: block;
+      font-size: 11px;
+      color: var(--text-tertiary);
+      margin-top: 4px;
+    }
+
+    /* ========================================
+       INTELLIGENCE (02) — AUTOCUE MOCKUP
+       ======================================== */
+    .autocue-mockup {
+      margin-top: 48px;
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      max-width: 600px;
+    }
+
+    .autocue-header {
+      padding: 12px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .autocue-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--copper);
+      opacity: 0.6;
+    }
+
+    .autocue-title {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .autocue-body {
+      padding: 24px 20px;
+    }
+
+    .autocue-suggestion {
+      padding: 16px 20px;
+      background: var(--surface-2);
+      border-left: 2px solid var(--copper);
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 12px;
+    }
+
+    .autocue-suggestion p {
+      font-size: 15px;
+      color: var(--text-primary);
+      font-style: italic;
+      max-width: none;
+    }
+
+    .autocue-context {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      font-family: 'Space Mono', monospace;
+      margin-top: 8px;
+    }
+
+    .autocue-meta {
+      padding: 12px 20px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .autocue-pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--copper);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    .autocue-status {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      font-family: 'Space Mono', monospace;
+    }
+
+    /* ========================================
+       MEMORY (03) — SEARCH MOCKUP
+       ======================================== */
+    .search-mockup {
+      margin-top: 48px;
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      max-width: 600px;
+    }
+
+    .search-bar {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .search-icon {
+      color: var(--text-tertiary);
+      flex-shrink: 0;
+    }
+
+    .search-input {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      color: var(--text-primary);
+      background: none;
+      border: none;
+      outline: none;
+      width: 100%;
+    }
+
+    .search-results {
+      padding: 8px 0;
+    }
+
+    .search-result {
+      padding: 14px 20px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      transition: background 0.15s;
+    }
+
+    .search-result:hover {
+      background: var(--surface-2);
+    }
+
+    .search-result-time {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      color: var(--text-tertiary);
+      white-space: nowrap;
+      padding-top: 2px;
+      min-width: 80px;
+    }
+
+    .search-result-content {
+      flex: 1;
+    }
+
+    .search-result-title {
+      font-size: 14px;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .search-result-title mark {
+      background: none;
+      color: var(--copper-highlight);
+    }
+
+    .search-result-meta {
+      font-size: 12px;
+      color: var(--text-tertiary);
+    }
+
+    .search-result-speaker {
+      color: var(--copper-mid);
+    }
+
+    /* ========================================
+       ECONOMICS (04) — TABLE
+       ======================================== */
+    .comparison-table {
+      margin-top: 48px;
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    .comparison-table table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 16px 20px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .comparison-table th {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 400;
+    }
+
+    .comparison-table td {
+      color: var(--text-secondary);
+    }
+
+    .comparison-table td:first-child {
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      color: var(--text-tertiary);
+    }
+
+    .comparison-table .col-undertone {
+      color: var(--copper-highlight);
+      font-weight: 500;
+    }
+
+    .comparison-table .th-undertone {
+      color: var(--copper);
+    }
+
+    .comparison-table .markup-row td {
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+    }
+
+    .comparison-table .highlight-cell {
+      color: var(--copper-highlight);
+    }
+
+    .economics-note {
+      margin-top: 32px;
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      max-width: 640px;
+    }
+
+    /* ========================================
+       CAPTURE (05)
+       ======================================== */
+
+    /* ========================================
+       FOR (06) — AUDIENCE CARDS
+       ======================================== */
+    .audience-cards {
+      margin-top: 48px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .audience-card {
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 24px;
+      transition: border-color 0.2s;
+    }
+
+    .audience-card:hover {
+      border-color: var(--slate);
+    }
+
+    .audience-card-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: 20px;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+    }
+
+    .audience-card-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      max-width: none;
+    }
+
+    /* ========================================
+       FEATURES GRID (09)
+       ======================================== */
+    .features-grid {
+      margin-top: 48px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .feature-card {
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 24px;
+      transition: border-color 0.2s;
+    }
+
+    .feature-card:hover {
+      border-color: var(--slate);
+    }
+
+    .feature-card-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--surface-3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      font-size: 14px;
+    }
+
+    .feature-card-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .feature-card-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: none;
+    }
+
+    /* ========================================
+       PRICING (10)
+       ======================================== */
+    .pricing-grid {
+      margin-top: 48px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 720px;
+    }
+
+    .pricing-card {
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 36px 32px;
+    }
+
+    .pricing-card.featured {
+      border-color: var(--copper-mid);
+    }
+
+    .pricing-card-name {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-tertiary);
+      margin-bottom: 8px;
+    }
+
+    .pricing-card-price {
+      font-family: 'Instrument Serif', serif;
+      font-size: 42px;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .pricing-card-price span {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      color: var(--text-tertiary);
+      font-weight: 400;
+    }
+
+    .pricing-card-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 28px;
+      max-width: none;
+    }
+
+    .pricing-features {
+      list-style: none;
+      margin-bottom: 32px;
+    }
+
+    .pricing-features li {
+      font-size: 14px;
+      color: var(--text-secondary);
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pricing-features li::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--copper);
+      flex-shrink: 0;
+    }
+
+    .pricing-btn {
+      width: 100%;
+      text-align: center;
+    }
+
+    /* ========================================
+       FINAL CTA
+       ======================================== */
+    .final-cta {
+      text-align: center;
+      padding: 160px 0;
+    }
+
+    .final-cta h2 {
+      font-size: clamp(24px, 3vw, 36px);
+      font-style: italic;
+      color: var(--text-secondary);
+      margin-bottom: 40px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ========================================
+       FOOTER
+       ======================================== */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 48px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 14px;
+      color: var(--text-tertiary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--text-secondary);
+    }
+
+    .footer-company {
+      font-size: 13px;
+      color: var(--text-tertiary);
+    }
+
+    /* ========================================
+       RESPONSIVE
+       ======================================== */
+    @media (max-width: 768px) {
+      section {
+        padding: 80px 0;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .audience-cards {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .architecture-visual {
+        height: 140px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 20px;
+      }
+
+      .audience-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .hero-buttons .btn {
+        width: 100%;
+        max-width: 280px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================
+       NAVIGATION
+       ============================================ -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-left">
+        <svg width="32" height="32" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="512" height="512" rx="112" fill="#161616"/>
+          <rect x="80" y="80" width="352" height="352" rx="40" fill="#444444" opacity="0.85"/>
+          <ellipse cx="256" cy="256" rx="60" ry="60" fill="#C47D3B" opacity="0.4"/>
+          <ellipse cx="256" cy="256" rx="28" ry="28" fill="#E0A86A" opacity="0.25"/>
+        </svg>
+        <span class="wordmark">undertone</span>
+      </a>
+      <a href="#download" class="btn btn-primary nav-btn">Download free</a>
+    </div>
+  </nav>
+
+  <!-- ============================================
+       HERO
+       ============================================ -->
+  <section class="hero" id="top">
+    <div class="hero-content">
+      <div class="hero-icon">
+        <svg width="64" height="64" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="c4w" cx="50%" cy="50%" r="40%">
+              <stop offset="0%" stop-color="#E0A86A" stop-opacity="0.35"/>
+              <stop offset="100%" stop-color="#C47D3B" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <rect width="512" height="512" rx="112" fill="#161616"/>
+          <ellipse cx="256" cy="256" rx="140" ry="140" fill="url(#c4w)"/>
+          <rect x="80" y="80" width="352" height="352" rx="40" fill="#444444" opacity="0.85"/>
+          <line x1="256" y1="80" x2="256" y2="432" stroke="#3A3A3A" stroke-width="3"/>
+          <line x1="80" y1="256" x2="432" y2="256" stroke="#3A3A3A" stroke-width="3"/>
+          <ellipse cx="256" cy="256" rx="48" ry="48" fill="#C47D3B" opacity="0.35"/>
+        </svg>
+      </div>
+      <h1>
+        <span>Hear everything.</span>
+        <span>Expose nothing.</span>
+      </h1>
+      <p class="subheadline">undertone transcribes on your device. Your audio never reaches a server. No bot joins your meeting. No cloud processes your words. The intelligence happens here, on your machine, in silence.</p>
+      <div class="hero-buttons">
+        <a href="#download" class="btn btn-primary">Download free</a>
+        <a href="#architecture" class="btn btn-secondary">Learn more</a>
+      </div>
+      <p class="hero-meta">macOS &middot; Free local transcription forever</p>
+    </div>
+  </section>
+
+  <!-- ============================================
+       01 — THE ARCHITECTURE
+       ============================================ -->
+  <section id="architecture">
+    <div class="container">
+      <p class="section-label mono">01</p>
+      <h2>Your audio stays on your device. Full stop.</h2>
+      <p class="section-body">undertone processes transcription locally using on-device AI. There is no server between your voice and your transcript. This is not a privacy toggle. It's how the product is built. The architecture is the guarantee.</p>
+
+      <div class="architecture-visual">
+        <div class="arch-block arch-device">
+          <div>
+            <strong style="color: var(--text-primary);">Your Mac</strong>
+            <span class="arch-label">microphone &rarr; whisper model &rarr; transcript</span>
+            <span class="arch-label" style="color: var(--copper); margin-top: 4px;">everything happens here</span>
+          </div>
+        </div>
+        <div class="arch-block arch-wall">
+        </div>
+        <div class="arch-block arch-cloud">
+          <div>
+            <span style="text-decoration: line-through;">Cloud</span>
+            <span class="arch-label">no data sent</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       02 — THE INTELLIGENCE
+       ============================================ -->
+  <section id="intelligence">
+    <div class="container">
+      <p class="section-label mono">02</p>
+      <h2>The question you should ask. Right now.</h2>
+      <p class="section-body">While you're in the meeting, undertone is listening. It analyses the live transcript and surfaces insights: the question nobody's asked, the contradiction worth pressing, the action item forming. Glance down. Ask it. The room thinks you're a genius.</p>
+
+      <div class="autocue-mockup">
+        <div class="autocue-header">
+          <div class="autocue-dot"></div>
+          <span class="autocue-title">autocue</span>
+        </div>
+        <div class="autocue-body">
+          <div class="autocue-suggestion">
+            <p>"You mentioned the Q3 timeline shifted twice &mdash; has the dependency on the data team been re-scoped, or are we still carrying that risk?"</p>
+            <p class="autocue-context">Based on contradiction detected at 14:32 and 21:07</p>
+          </div>
+          <div class="autocue-suggestion" style="opacity: 0.5;">
+            <p>"What's the fallback if the vendor doesn't deliver by the 15th?"</p>
+            <p class="autocue-context">Unresolved risk &mdash; mentioned but not addressed</p>
+          </div>
+        </div>
+        <div class="autocue-meta">
+          <div class="autocue-pulse"></div>
+          <span class="autocue-status">listening &middot; 23:41 elapsed</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       03 — THE MEMORY
+       ============================================ -->
+  <section id="memory">
+    <div class="container">
+      <p class="section-label mono">03</p>
+      <h2>A year of conversations. Twelve seconds to find any moment.</h2>
+      <p class="section-body">Every recording becomes a permanent, searchable, speaker-labelled asset in your vault. Ask AI questions across thousands of hours. The undertone beneath your work life surfaces on demand: patterns, decisions, the thing someone said that you almost forgot. Almost.</p>
+
+      <div class="search-mockup">
+        <div class="search-bar">
+          <svg class="search-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <circle cx="6.5" cy="6.5" r="5.5" stroke="#5A5A5A" stroke-width="1.5"/>
+            <line x1="10.5" y1="10.5" x2="14.5" y2="14.5" stroke="#5A5A5A" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <span class="search-input">budget approval for Berlin office</span>
+        </div>
+        <div class="search-results">
+          <div class="search-result">
+            <span class="search-result-time">Mar 4, 2026</span>
+            <div class="search-result-content">
+              <p class="search-result-title">"The <mark>Berlin office budget</mark> was <mark>approved</mark> in principle, but we need the revised numbers by Friday."</p>
+              <p class="search-result-meta"><span class="search-result-speaker">Sarah Chen</span> &middot; Q1 Planning Sync &middot; 41:23</p>
+            </div>
+          </div>
+          <div class="search-result">
+            <span class="search-result-time">Feb 18, 2026</span>
+            <div class="search-result-content">
+              <p class="search-result-title">"I don't think we can justify the <mark>Berlin</mark> expansion without the <mark>budget</mark> framework from finance."</p>
+              <p class="search-result-meta"><span class="search-result-speaker">Marcus Reiter</span> &middot; Leadership Standup &middot; 12:07</p>
+            </div>
+          </div>
+          <div class="search-result">
+            <span class="search-result-time">Jan 30, 2026</span>
+            <div class="search-result-content">
+              <p class="search-result-title">"Let's table the <mark>Berlin</mark> discussion until we have <mark>approval</mark> from the board."</p>
+              <p class="search-result-meta"><span class="search-result-speaker">Diane Okafor</span> &middot; Exec Review &middot; 08:55</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       04 — THE ECONOMICS
+       ============================================ -->
+  <section id="economics">
+    <div class="container">
+      <p class="section-label mono">04</p>
+      <h2>The actual cost of transcription is &euro;0.006 per minute.</h2>
+
+      <div class="comparison-table">
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Wholesale</th>
+              <th>Otter.ai</th>
+              <th>Fireflies</th>
+              <th class="th-undertone">undertone</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1 hour</td>
+              <td>&euro;0.36</td>
+              <td>&euro;4.17</td>
+              <td>&euro;3.33</td>
+              <td class="col-undertone">&euro;0.40</td>
+            </tr>
+            <tr class="markup-row">
+              <td>Markup</td>
+              <td>&mdash;</td>
+              <td>1,058%</td>
+              <td>825%</td>
+              <td class="highlight-cell">10%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="economics-note">Local transcription is unlimited and free. The margin is the product. The transparency is the weapon.</p>
+    </div>
+  </section>
+
+  <!-- ============================================
+       05 — THE CAPTURE
+       ============================================ -->
+  <section id="capture">
+    <div class="container">
+      <p class="section-label mono">05</p>
+      <h2>Nobody knows you're recording.</h2>
+      <p class="section-body">undertone captures system audio invisibly. No bot joins the call. No notification pops up. No participant list changes. The recording happens at the operating system level &mdash; the audio that reaches your speakers is the audio that undertone transcribes. To every other person in the meeting, nothing has changed. To you, everything has.</p>
+      <p class="section-body" style="margin-top: 16px; font-size: 14px; color: var(--text-tertiary);">Check your local laws regarding recording consent. undertone gives you the capability. The responsibility is yours.</p>
+    </div>
+  </section>
+
+  <!-- ============================================
+       06 — FOR
+       ============================================ -->
+  <section id="for">
+    <div class="container">
+      <p class="section-label mono">06</p>
+      <h2>People whose words carry weight.</h2>
+      <p class="section-body">undertone is for people who live in conversation and can't afford to lose a single thread. People whose work depends on what was said, how it was said, and whether anyone followed through.</p>
+
+      <div class="audience-cards">
+        <div class="audience-card">
+          <h3 class="audience-card-title">Journalists</h3>
+          <p class="audience-card-desc">Record sources without a visible tool. Search years of interviews instantly. Protect your material on your own hardware.</p>
+        </div>
+        <div class="audience-card">
+          <h3 class="audience-card-title">Researchers</h3>
+          <p class="audience-card-desc">Transcribe fieldwork locally. No ethics board will question where the data went &mdash; it never left your machine.</p>
+        </div>
+        <div class="audience-card">
+          <h3 class="audience-card-title">Therapists &amp; lawyers</h3>
+          <p class="audience-card-desc">Client confidentiality isn't a feature toggle. It's an architecture. Every word stays on-device by design.</p>
+        </div>
+        <div class="audience-card">
+          <h3 class="audience-card-title">ADHD &amp; memory</h3>
+          <p class="audience-card-desc">You were listening. You just can't always hold it. undertone holds it for you &mdash; every word, every meeting, searchable forever.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FEATURES GRID
+       ============================================ -->
+  <section id="features">
+    <div class="container">
+      <h2>Everything that matters. Nothing that doesn't.</h2>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-card-icon" style="color: var(--copper);">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+          <p class="feature-card-title">On-device transcription</p>
+          <p class="feature-card-desc">Whisper-based AI runs locally. No network required. No data leaves your Mac.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-icon" style="color: var(--copper);">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="8" r="2" fill="currentColor"/></svg>
+          </div>
+          <p class="feature-card-title">System audio capture</p>
+          <p class="feature-card-desc">Records what your speakers play. Works with Zoom, Meet, Teams, any app. Invisible to others.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-icon" style="color: var(--copper);">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8h8M8 4v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <p class="feature-card-title">Speaker identification</p>
+          <p class="feature-card-desc">Automatically labels who said what. Learns voices over time for better accuracy.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-icon" style="color: var(--copper);">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 5l5 6 5-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <p class="feature-card-title">Autocue insights</p>
+          <p class="feature-card-desc">Real-time suggestions, questions, and contradictions surfaced while you're still in the meeting.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-icon" style="color: var(--copper);">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="3" y="3" width="10" height="10" rx="1" stroke="currentColor" stroke-width="1.5"/><path d="M6 6h4M6 8h3" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg>
+          </div>
+          <p class="feature-card-title">Searchable vault</p>
+          <p class="feature-card-desc">Every transcript is indexed and searchable. Find any moment across years of recordings in seconds.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-icon" style="color: var(--copper);">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v3l2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <p class="feature-card-title">AI summaries</p>
+          <p class="feature-card-desc">Automatic meeting summaries, action items, and key decisions. Processed locally on your device.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-icon" style="color: var(--copper);">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 12l4-4 3 3 5-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <p class="feature-card-title">Cross-meeting patterns</p>
+          <p class="feature-card-desc">Ask AI questions that span thousands of hours. Find patterns, track commitments, surface forgotten context.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-icon" style="color: var(--copper);">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="4" width="14" height="8" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M5 7v2M8 6v4M11 7v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <p class="feature-card-title">Export anywhere</p>
+          <p class="feature-card-desc">Markdown, plain text, JSON, SRT. Your transcripts, your format, your workflow.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-icon" style="color: var(--copper);">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2a6 6 0 100 12A6 6 0 008 2z" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v3h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <p class="feature-card-title">Works offline</p>
+          <p class="feature-card-desc">No internet required for transcription. Record and transcribe on a plane, in a bunker, wherever you are.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       PRICING
+       ============================================ -->
+  <section id="pricing">
+    <div class="container">
+      <h2>The real cost of transcription.</h2>
+      <p class="section-body">Local transcription is free, forever. Cloud features are priced at cost plus a transparent margin.</p>
+
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <p class="pricing-card-name">Free</p>
+          <p class="pricing-card-price">&euro;0 <span>/ forever</span></p>
+          <p class="pricing-card-desc">Local transcription with no limits, no accounts, no cloud.</p>
+          <ul class="pricing-features">
+            <li>Unlimited local transcription</li>
+            <li>System audio capture</li>
+            <li>Speaker identification</li>
+            <li>Searchable local vault</li>
+            <li>Export (Markdown, TXT, SRT)</li>
+            <li>Works offline</li>
+          </ul>
+          <a href="#download" class="btn btn-secondary pricing-btn">Download free</a>
+        </div>
+        <div class="pricing-card featured">
+          <p class="pricing-card-name">Pro</p>
+          <p class="pricing-card-price">&euro;9 <span>/ month</span></p>
+          <p class="pricing-card-desc">Cloud AI features at cost. The margin is 10%. We publish the math.</p>
+          <ul class="pricing-features">
+            <li>Everything in Free</li>
+            <li>Autocue live insights</li>
+            <li>AI summaries &amp; action items</li>
+            <li>Cross-meeting AI queries</li>
+            <li>Advanced speaker learning</li>
+            <li>Priority model updates</li>
+          </ul>
+          <a href="#download" class="btn btn-primary pricing-btn">Start free, upgrade later</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FINAL CTA
+       ============================================ -->
+  <section class="final-cta" id="download">
+    <div class="container">
+      <h2>The quiet signal beneath everything you say.</h2>
+      <a href="#" class="btn btn-primary" style="padding: 14px 36px; font-size: 16px;">Download undertone free</a>
+      <p style="margin-top: 20px; font-size: 13px; color: var(--text-tertiary);">macOS &middot; Apple Silicon &amp; Intel &middot; No account required</p>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <svg width="24" height="24" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="512" height="512" rx="112" fill="#161616"/>
+            <rect x="80" y="80" width="352" height="352" rx="40" fill="#444444" opacity="0.85"/>
+            <ellipse cx="256" cy="256" rx="60" ry="60" fill="#C47D3B" opacity="0.4"/>
+            <ellipse cx="256" cy="256" rx="28" ry="28" fill="#E0A86A" opacity="0.25"/>
+          </svg>
+          <span class="wordmark" style="font-size: 16px;">undertone</span>
+        </div>
+        <ul class="footer-links">
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Documentation</a></li>
+          <li><a href="#">Changelog</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        <p class="footer-company">Ultramoon GmbH &middot; Berlin, Germany</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
