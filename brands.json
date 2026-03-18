@@ -291,5 +291,115 @@
     "twitter_handle": "TutaPrivacy",
     "has_facebook_ads": false,
     "notes": "Footer social links include Mastodon, Bluesky, Reddit but not Twitter/X; however @TutaPrivacy exists on X"
+  },
+  {
+    "name": "WhisprFlow",
+    "tier": "direct",
+    "website": "https://whisprflow.com",
+    "pricing_url": "https://whisprflow.com/pricing",
+    "appstore_search": "whisprflow",
+    "appstore_top_result": null,
+    "twitter_handle": null,
+    "has_facebook_ads": false,
+    "notes": "Added per user request. URLs to be validated."
+  },
+  {
+    "name": "Apple",
+    "tier": "adjacent",
+    "website": "https://apple.com",
+    "pricing_url": null,
+    "appstore_search": null,
+    "appstore_top_result": null,
+    "twitter_handle": "Apple",
+    "has_facebook_ads": false,
+    "notes": "Premium copy benchmark. Platform owner. Focus on product page copy."
+  },
+  {
+    "name": "Anthropic",
+    "tier": "adjacent",
+    "website": "https://anthropic.com",
+    "pricing_url": "https://anthropic.com/pricing",
+    "appstore_search": "claude anthropic",
+    "appstore_top_result": null,
+    "twitter_handle": "AnthropicAI",
+    "has_facebook_ads": false,
+    "notes": "AI company with strong, understated voice. Aspirational messaging benchmark."
+  },
+  {
+    "name": "Dyson",
+    "tier": "adjacent",
+    "website": "https://dyson.com",
+    "pricing_url": null,
+    "appstore_search": null,
+    "appstore_top_result": null,
+    "twitter_handle": "Dyson",
+    "has_facebook_ads": false,
+    "notes": "Premium product copy, engineering confidence. No software product."
+  },
+  {
+    "name": "Lexus",
+    "tier": "adjacent",
+    "website": "https://lexus.com",
+    "pricing_url": null,
+    "appstore_search": null,
+    "appstore_top_result": null,
+    "twitter_handle": "Lexus",
+    "has_facebook_ads": false,
+    "notes": "Luxury brand, quiet confidence copy benchmark."
+  },
+  {
+    "name": "BMW",
+    "tier": "adjacent",
+    "website": "https://bmw.com",
+    "pricing_url": null,
+    "appstore_search": null,
+    "appstore_top_result": null,
+    "twitter_handle": "BMW",
+    "has_facebook_ads": false,
+    "notes": "Premium automotive, performance messaging benchmark."
+  },
+  {
+    "name": "Audi",
+    "tier": "adjacent",
+    "website": "https://audi.com",
+    "pricing_url": null,
+    "appstore_search": null,
+    "appstore_top_result": null,
+    "twitter_handle": "Audi",
+    "has_facebook_ads": false,
+    "notes": "Premium automotive. Vorsprung durch Technik — confidence through engineering."
+  },
+  {
+    "name": "Clue",
+    "tier": "adjacent",
+    "website": "https://helloclue.com",
+    "pricing_url": null,
+    "appstore_search": "clue period tracker",
+    "appstore_top_result": null,
+    "twitter_handle": "claboratories",
+    "has_facebook_ads": false,
+    "notes": "Privacy-conscious health app. Strong privacy messaging in sensitive domain."
+  },
+  {
+    "name": "Manus",
+    "tier": "adjacent",
+    "website": "https://manus.im",
+    "pricing_url": "https://manus.im/pricing",
+    "appstore_search": null,
+    "appstore_top_result": null,
+    "twitter_handle": "maboroshi_ai",
+    "has_facebook_ads": false,
+    "notes": "AI agent tool. Aspirational messaging for AI product positioning."
+  },
+  {
+    "name": "Supabase",
+    "tier": "adjacent",
+    "website": "https://supabase.com",
+    "pricing_url": "https://supabase.com/pricing",
+    "appstore_search": null,
+    "appstore_top_result": null,
+    "twitter_handle": "supabase",
+    "has_facebook_ads": false,
+    "notes": "Developer tool with strong brand voice and community. Open source positioning."
   }
 ]
