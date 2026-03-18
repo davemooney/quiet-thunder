@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naming Concepts — Hushmark / offRecord / undertone</title>
+    <style>
+        :root {
+            --bg-deep: #050507;
+            --bg-surface: #0c0c10;
+            --bg-card: #111117;
+            --bg-glass: rgba(255,255,255,0.03);
+            --border: rgba(255,255,255,0.06);
+            --text-primary: #e8e8ec;
+            --text-secondary: #8a8a9a;
+            --text-muted: #55556a;
+            --accent-hush: #7b6fa0;
+            --accent-hush-glow: rgba(123,111,160,0.15);
+            --accent-off: #5a8f7a;
+            --accent-off-glow: rgba(90,143,122,0.15);
+            --accent-under: #8a7a5a;
+            --accent-under-glow: rgba(138,122,90,0.15);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: var(--bg-deep);
+            color: var(--text-primary);
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            gap: 2px;
+            padding: 16px 24px;
+            background: rgba(5,5,7,0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            padding: 8px 20px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        .nav a:hover { color: var(--text-primary); background: var(--bg-glass); }
+        .nav a.hush:hover { color: var(--accent-hush); }
+        .nav a.off:hover { color: var(--accent-off); }
+        .nav a.under:hover { color: var(--accent-under); }
+
+        /* ===== SECTIONS ===== */
+        .intro {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 120px 24px 80px;
+            text-align: center;
+        }
+        .intro h1 {
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+        .intro p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .brand-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px 160px;
+        }
+
+        .brand-header {
+            text-align: center;
+            padding: 80px 0 60px;
+            border-top: 1px solid var(--border);
+        }
+        .brand-header .brand-name {
+            font-size: 72px;
+            font-weight: 700;
+            letter-spacing: -2px;
+            margin-bottom: 12px;
+        }
+        .brand-header .brand-essence {
+            font-size: 16px;
+            color: var(--text-secondary);
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        /* Accent colours per brand */
+        .hushmark .brand-name { color: var(--accent-hush); }
+        .hushmark .hero-h1 { color: var(--accent-hush); }
+        .hushmark .accent { color: var(--accent-hush); }
+        .hushmark .cta-btn { background: var(--accent-hush); }
+        .hushmark .glow { box-shadow: 0 0 80px var(--accent-hush-glow); }
+        .hushmark .tag { background: var(--accent-hush-glow); color: var(--accent-hush); border: 1px solid rgba(123,111,160,0.2); }
+
+        .offrecord .brand-name { color: var(--accent-off); }
+        .offrecord .hero-h1 { color: var(--accent-off); }
+        .offrecord .accent { color: var(--accent-off); }
+        .offrecord .cta-btn { background: var(--accent-off); }
+        .offrecord .glow { box-shadow: 0 0 80px var(--accent-off-glow); }
+        .offrecord .tag { background: var(--accent-off-glow); color: var(--accent-off); border: 1px solid rgba(90,143,122,0.2); }
+
+        .undertone .brand-name { color: var(--accent-under); }
+        .undertone .hero-h1 { color: var(--accent-under); }
+        .undertone .accent { color: var(--accent-under); }
+        .undertone .cta-btn { background: var(--accent-under); }
+        .undertone .glow { box-shadow: 0 0 80px var(--accent-under-glow); }
+        .undertone .tag { background: var(--accent-under-glow); color: var(--accent-under); border: 1px solid rgba(138,122,90,0.2); }
+
+        /* ===== HERO ===== */
+        .hero {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 80px 60px;
+            text-align: center;
+            margin-bottom: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 50% 80%, var(--bg-glass) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        .hero-h1 {
+            font-size: 48px;
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .hero-sub {
+            font-size: 19px;
+            color: var(--text-secondary);
+            max-width: 560px;
+            margin: 0 auto 32px;
+            line-height: 1.65;
+        }
+        .cta-btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 10px;
+            color: #000;
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: 0.3px;
+            text-decoration: none;
+            position: relative;
+        }
+
+        /* ===== CONTENT CARDS ===== */
+        .cards { display: grid; gap: 20px; margin-bottom: 32px; }
+        .cards-2 { grid-template-columns: 1fr 1fr; }
+        .cards-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+        }
+        .card-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+        .card h3 {
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+        .card p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+        .card .quote {
+            font-size: 17px;
+            font-style: italic;
+            color: var(--text-primary);
+            border-left: 2px solid var(--border);
+            padding-left: 16px;
+            margin: 12px 0;
+        }
+
+        /* ===== SCROLL NARRATIVE ===== */
+        .scroll-section {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 24px;
+            padding: 32px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .scroll-section:last-child { border-bottom: none; }
+        .scroll-label {
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            padding-top: 4px;
+        }
+        .scroll-content h3 {
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+        .scroll-content p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ===== APP STORE MOCKUP ===== */
+        .appstore-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+        .appstore-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #2a2a35, #1a1a22);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+        }
+        .appstore-meta { flex: 1; }
+        .appstore-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+        .appstore-subtitle {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+        .appstore-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+        .char-count {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-family: 'SF Mono', 'Menlo', monospace;
+            margin-top: 4px;
+        }
+
+        /* ===== AD MOCKUPS ===== */
+        .ad-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .ad-image {
+            height: 180px;
+            background: linear-gradient(135deg, #0f0f15, #1a1a25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            padding: 24px;
+            text-align: center;
+            line-height: 1.2;
+        }
+        .ad-body {
+            padding: 16px 20px;
+        }
+        .ad-headline {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .ad-text {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+        .ad-cta {
+            font-size: 12px;
+            font-weight: 600;
+            padding: 6px 16px;
+            border-radius: 6px;
+            display: inline-block;
+        }
+
+        /* ===== BIO SECTION ===== */
+        .bio-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 12px;
+        }
+        .bio-text {
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        /* ===== TAGS ===== */
+        .tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            margin-right: 6px;
+            margin-bottom: 6px;
+        }
+
+        /* ===== EXTENSIONS ===== */
+        .ext-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+        .ext-item {
+            background: var(--bg-glass);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px;
+            text-align: center;
+        }
+        .ext-item .ext-name {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .ext-item .ext-desc {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* ===== COMPARISON TABLE ===== */
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+        .compare-table th {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            text-align: left;
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+        }
+        .compare-table td {
+            font-size: 14px;
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+        .compare-table tr:last-child td { border-bottom: none; }
+
+        /* ===== SEPARATOR ===== */
+        .divider {
+            width: 60px;
+            height: 1px;
+            background: var(--border);
+            margin: 60px auto;
+        }
+
+        /* ===== VIDEO SCRIPT ===== */
+        .storyboard {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+        .frame {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .frame-visual {
+            aspect-ratio: 16/9;
+            background: linear-gradient(135deg, #0a0a10, #15151f);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            text-align: center;
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        .frame-meta {
+            padding: 10px 12px;
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+        .frame-meta .timing {
+            font-family: 'SF Mono', 'Menlo', monospace;
+            font-size: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .cards-2, .cards-3, .ext-grid, .storyboard { grid-template-columns: 1fr; }
+            .scroll-section { grid-template-columns: 1fr; gap: 8px; }
+            .hero-h1 { font-size: 32px; }
+            .brand-header .brand-name { font-size: 48px; }
+            .hero { padding: 48px 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="nav">
+    <a href="#hushmark" class="hush">HUSHMARK</a>
+    <a href="#offrecord" class="off">OFFRECORD</a>
+    <a href="#undertone" class="under">UNDERTONE</a>
+</nav>
+
+<!-- ================================================ -->
+<!-- INTRO -->
+<!-- ================================================ -->
+<section class="intro">
+    <h1>Three Names. Three Universes.</h1>
+    <p>Each name below is presented as a fully realised brand concept with hero copy, landing page narrative, App Store listing, ad concepts, social bios, video scripts, and naming extensions. All copy is grounded in the competitive whitespace analysis of 589 copy elements across 36 brands.</p>
+</section>
+
+
+<!-- ================================================ -->
+<!-- HUSHMARK -->
+<!-- ================================================ -->
+<section id="hushmark" class="brand-section hushmark">
+    <div class="brand-header">
+        <div class="brand-name">Hushmark</div>
+        <div class="brand-essence">The mark of silence. The standard for what stays private.</div>
+    </div>
+
+    <!-- Creative Territory -->
+    <div class="card glow" style="margin-bottom: 32px;">
+        <div class="card-label">Creative Territory</div>
+        <p>"Hush" is the silence your data lives in. "Mark" is the standard it sets. Together, they imply a watermark of privacy — invisible, permanent, defining. This name lives in the territory of Signal and Mullvad: quiet authority. It sounds like something that was always there, waiting for you to find it. Two syllables. Memorable after one hearing. The "hush" carries the privacy promise in the sound itself — before anyone reads a word of copy, they feel the product's intent.</p>
+    </div>
+
+    <!-- HERO OPTIONS -->
+    <div class="card-label" style="padding: 0 0 12px;">HERO OPTIONS</div>
+
+    <div class="hero glow">
+        <div class="hero-h1">Your voice stays yours.</div>
+        <div class="hero-sub">Hushmark transcribes on your device. Your audio never touches a server. No bots join your call. No cloud sees your words. Just you, your machine, and everything you said — searchable in seconds.</div>
+        <a class="cta-btn" href="#">Download free</a>
+    </div>
+
+    <div class="hero">
+        <div class="hero-h1">The silence between your words<br>and the cloud.</div>
+        <div class="hero-sub">On-device transcription. Speaker labels. 100+ languages. AI summaries you control. Your audio never uploads unless you choose it — and when you do, you see exactly what it costs.</div>
+        <a class="cta-btn" href="#">Get Hushmark</a>
+    </div>
+
+    <div class="hero">
+        <div class="hero-h1">Record everything.<br>Upload nothing.</div>
+        <div class="hero-sub">Hushmark captures system audio, microphone, or both — without a bot joining your meeting. Transcription runs locally. Your vault of searchable conversations grows on your machine, encrypted, untouchable.</div>
+        <a class="cta-btn" href="#">Download for Mac</a>
+    </div>
+
+    <!-- LANDING PAGE SCROLL NARRATIVE -->
+    <div class="card" style="margin-bottom: 32px;">
+        <div class="card-label">Landing Page Scroll Narrative</div>
+
+        <div class="scroll-section">
+            <div class="scroll-label">The Promise</div>
+            <div class="scroll-content">
+                <h3>Your audio never leaves.</h3>
+                <p>Other tools upload your voice to process it. Hushmark doesn't. Transcription runs on your machine using on-device AI. There is no server between your voice and your transcript. This isn't a privacy setting. It's the architecture.</p>
+            </div>
+        </div>
+
+        <div class="scroll-section">
+            <div class="scroll-label">The Intelligence</div>
+            <div class="scroll-content">
+                <h3>An AI strategist in your ear.</h3>
+                <p>While you're still in the meeting, Hushmark analyses the live transcript and whispers back: questions to ask, contradictions to probe, action items forming in real time. You glance down. You ask the perfect question. You look like you've been preparing all week.</p>
+            </div>
+        </div>
+
+        <div class="scroll-section">
+            <div class="scroll-label">The Vault</div>
+            <div class="scroll-content">
+                <h3>Every conversation you've had. Searchable in twelve seconds.</h3>
+                <p>Hushmark is a vault that compounds. Ask questions across 3,000 recordings. Find what someone said six months ago. Every recording is tagged, timestamped, speaker-labelled, and encrypted. The longer you use it, the more irreplaceable it becomes.</p>
+            </div>
+        </div>
+
+        <div class="scroll-section">
+            <div class="scroll-label">The Receipt</div>
+            <div class="scroll-content">
+                <h3>We'll show you what transcription actually costs.</h3>
+                <p>Cloud transcription costs roughly &euro;0.006 per minute at wholesale. Most tools charge &euro;0.05 to &euro;0.10 per minute. That's a 700% to 1,500% markup. Hushmark charges cost plus 10%. Local transcription is free. Here is the math. That is the entire business model.</p>
+            </div>
+        </div>
+
+        <div class="scroll-section">
+            <div class="scroll-label">The Capture</div>
+            <div class="scroll-content">
+                <h3>No bot joins your call.</h3>
+                <p>Hushmark captures audio directly from your device — system audio, microphone, or both. Nobody in the meeting sees a notification. Nobody wonders who's recording. The capture is invisible because the capture is local.</p>
+            </div>
+        </div>
+
+        <div class="scroll-section">
+            <div class="scroll-label">Built for</div>
+            <div class="scroll-content">
+                <h3>People with the most to protect.</h3>
+                <p>Journalists protecting sources. Researchers handling sensitive interviews. Therapists, lawyers, executives who can't afford to have conversations leak. People with ADHD who need reliable capture without cognitive overhead. Built in Germany. Encrypted by default.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- APP STORE -->
+    <div class="card-label" style="padding: 0 0 12px;">APP STORE LISTINGS</div>
+    <div class="cards cards-3" style="margin-bottom: 32px;">
+        <div class="appstore-card">
+            <div class="appstore-icon" style="color: var(--accent-hush);">H</div>
+            <div class="appstore-meta">
+                <div class="appstore-title">Hushmark - Transcribe Local</div>
+                <div class="appstore-subtitle">Private. On-device. Yours.</div>
+                <div class="appstore-desc">Your audio never leaves your Mac. Hushmark transcribes locally with speaker labels, 100+ languages, and AI you control. Free forever.</div>
+                <div class="char-count">Title: 29 chars | Subtitle: 25 chars</div>
+            </div>
+        </div>
+        <div class="appstore-card">
+            <div class="appstore-icon" style="color: var(--accent-hush);">H</div>
+            <div class="appstore-meta">
+                <div class="appstore-title">Hushmark - Private Transcript</div>
+                <div class="appstore-subtitle">No upload. No bot. No cloud.</div>
+                <div class="appstore-desc">Other transcription tools upload your audio. Hushmark doesn't. On-device AI processes everything locally. Your vault of conversations stays encrypted on your machine.</div>
+                <div class="char-count">Title: 30 chars | Subtitle: 28 chars</div>
+            </div>
+        </div>
+        <div class="appstore-card">
+            <div class="appstore-icon" style="color: var(--accent-hush);">H</div>
+            <div class="appstore-meta">
+                <div class="appstore-title">Hushmark: Voice Intelligence</div>
+                <div class="appstore-subtitle">On-device. Zero knowledge.</div>
+                <div class="appstore-desc">Record meetings without a bot. Transcribe on your Mac. Ask AI questions about everything you've ever recorded. Your audio stays on your device. Always.</div>
+                <div class="char-count">Title: 29 chars | Subtitle: 27 chars</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADS -->
+    <div class="card-label" style="padding: 0 0 12px;">AD CONCEPTS</div>
+    <div class="cards cards-3" style="margin-bottom: 32px;">
+        <div class="ad-card">
+            <div class="ad-image" style="color: var(--accent-hush);">0 bytes<br>uploaded.</div>
+            <div class="ad-body">
+                <div class="ad-headline">Your meetings. Your machine.</div>
+                <div class="ad-text">Hushmark transcribes on your device. No cloud. No bots. No uploads. Free forever.</div>
+                <div class="ad-cta tag">Download Free</div>
+            </div>
+        </div>
+        <div class="ad-card">
+            <div class="ad-image" style="font-size: 18px; color: var(--text-secondary);">"What did Sarah say<br>about the budget?"<br><span style="font-size:14px; color: var(--text-muted);">Search 3,000 recordings<br>in twelve seconds.</span></div>
+            <div class="ad-body">
+                <div class="ad-headline">Your searchable voice vault.</div>
+                <div class="ad-text">Every conversation, tagged and encrypted on your machine. Hushmark remembers everything you said.</div>
+                <div class="ad-cta tag">Try Hushmark</div>
+            </div>
+        </div>
+        <div class="ad-card">
+            <div class="ad-image" style="font-size: 16px; color: var(--text-secondary);">Otter charges &euro;0.10/min.<br>The API costs &euro;0.006.<br><span style="color: var(--accent-hush); font-size: 20px;">We show you both.</span></div>
+            <div class="ad-body">
+                <div class="ad-headline">The receipt for your transcription.</div>
+                <div class="ad-text">Cost plus 10%. Local is free. See the real price before you choose. Hushmark.</div>
+                <div class="ad-cta tag">See the Math</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SOCIAL BIOS -->
+    <div class="card-label" style="padding: 0 0 12px;">SOCIAL BIOS</div>
+    <div class="card" style="margin-bottom: 32px;">
+        <div class="bio-card">
+            <div class="bio-text">On-device transcription. Your audio never uploads. Speaker labels, 100+ languages, AI you control. Free local processing. Built in Germany.</div>
+            <div class="char-count">137 chars</div>
+        </div>
+        <div class="bio-card">
+            <div class="bio-text">The transcription app that never sees your audio. On-device AI. No bots. No cloud. Free forever. Cloud credits at cost+10%.</div>
+            <div class="char-count">124 chars</div>
+        </div>
+        <div class="bio-card">
+            <div class="bio-text">Record everything. Upload nothing. Private voice intelligence for people who can't afford to have their conversations leak.</div>
+            <div class="char-count">125 chars</div>
+        </div>
+    </div>
+
+    <!-- NAMING EXTENSIONS -->
+    <div class="card-label" style="padding: 0 0 12px;">HOW THE NAME EXTENDS</div>
+    <div class="ext-grid" style="margin-bottom: 32px;">
+        <div class="ext-item">
+            <div class="ext-name accent">Hushmark Pro</div>
+            <div class="ext-desc">Premium tier. E2E sync, priority support.</div>
+        </div>
+        <div class="ext-item">
+            <div class="ext-name accent">Hushmark Credits</div>
+            <div class="ext-desc">Cloud API credits at cost+10%.</div>
+        </div>
+        <div class="ext-item">
+            <div class="ext-name accent">Hushmark Vault</div>
+            <div class="ext-desc">The searchable library. Already has a name.</div>
+        </div>
+        <div class="ext-item">
+            <div class="ext-name accent">Hushmark Autocue</div>
+            <div class="ext-desc">Live meeting intelligence overlay.</div>
+        </div>
+        <div class="ext-item">
+            <div class="ext-name accent">Hushmark for Teams</div>
+            <div class="ext-desc">Future team tier. Name scales naturally.</div>
+        </div>
+        <div class="ext-item">
+            <div class="ext-name accent">The Hushmark</div>
+            <div class="ext-desc">"Put a Hushmark on it" — verb potential.</div>
+        </div>
+    </div>
+
+    <!-- 15s VIDEO -->
+    <div class="card-label" style="padding: 0 0 12px;">15-SECOND SPOT: "THE SILENCE"</div>
+    <div class="storyboard" style="margin-bottom: 32px;">
+        <div class="frame">
+            <div class="frame-visual" style="color: var(--text-muted); font-size: 13px;">Dark screen.<br>Text fades in.</div>
+            <div class="frame-meta">
+                <div class="timing">[0-3s]</div>
+                "Your transcription tool uploads your voice."
+            </div>
+        </div>
+        <div class="frame">
+            <div class="frame-visual" style="color: var(--text-muted); font-size: 13px;">Text dissolves.<br>Silence. Black.</div>
+            <div class="frame-meta">
+                <div class="timing">[3-7s]</div>
+                "Hushmark doesn't."
+            </div>
+        </div>
+        <div class="frame">
+            <div class="frame-visual" style="color: var(--text-muted); font-size: 13px;">Liquid metal orb<br>pulses gently.</div>
+            <div class="frame-meta">
+                <div class="timing">[7-12s]</div>
+                "On-device AI. No cloud. No bots. Free."
+            </div>
+        </div>
+        <div class="frame">
+            <div class="frame-visual" style="color: var(--accent-hush);">Hushmark</div>
+            <div class="frame-meta">
+                <div class="timing">[12-15s]</div>
+                hushmark.app &mdash; Download free.
+            </div>
+        </div>
+    </div>
+
+    <!-- WHY THIS NAME -->
+    <div class="card glow">
+        <div class="card-label">Why Hushmark Works</div>
+        <div class="cards cards-2" style="margin-top: 16px; border: none; padding: 0;">
+            <div style="padding: 0;">
+                <h3 style="font-size: 16px; margin-bottom: 8px;">Strengths</h3>
+                <p style="font-size: 14px; color: var(--text-secondary);">&bull; Privacy is in the sound itself — "hush" before you read a word<br>&bull; "Mark" implies quality standard, benchmark, watermark<br>&bull; Two syllables, one compound word, instantly spellable<br>&bull; Verb potential: "Hushmark that meeting"<br>&bull; Works across cultures — "hush" is near-universal<br>&bull; The name sounds like it could be a verb, noun, or adjective<br>&bull; Premium feel — sounds like a brand that's been around</p>
+            </div>
+            <div style="padding: 0;">
+                <h3 style="font-size: 16px; margin-bottom: 8px;">Considerations</h3>
+                <p style="font-size: 14px; color: var(--text-secondary);">&bull; Could read as "censorship" adjacent in some contexts<br>&bull; Slightly serious — less room for playfulness<br>&bull; "Mark" doesn't immediately connote audio/voice<br>&bull; May need to work harder to communicate the product category<br>&bull; Domain availability to be confirmed (.app, .io likely available)</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ================================================ -->
+<!-- OFFRECORD -->
+<!-- ================================================ -->
+<section id="offrecord" class="brand-section offrecord">
+    <div class="brand-header">
+        <div class="brand-name">offRecord</div>
+        <div class="brand-essence">It's recording. It's off the record. Both are true.</div>
+    </div>
+
+    <!-- Creative Territory -->
+    <div class="card glow" style="margin-bottom: 32px;">
+        <div class="card-label">Creative Territory</div>
+        <p>"Off the record" is a phrase every journalist, lawyer, and executive knows. It means: this conversation is confidential. It is not to be attributed, shared, or uploaded. offRecord turns that phrase into a product — one that literally records while keeping everything off the record (off the cloud, off the server, off anyone else's infrastructure). The contradiction IS the value proposition. The name has built-in narrative tension, journalistic credibility, and immediate comprehension. The camelCase styling (offRecord) gives it a developer-tool edge while the phrase itself is warm and human.</p>
+    </div>
+
+    <!-- HERO OPTIONS -->
+    <div class="card-label" style="padding: 0 0 12px;">HERO OPTIONS</div>
+
+    <div class="hero glow">
+        <div class="hero-h1">It records everything.<br>None of it leaves your device.</div>
+        <div class="hero-sub">offRecord is transcription that stays off the cloud, off the server, and off limits to anyone but you. On-device AI. No bots. No uploads. Your audio lives on your machine. Period.</div>
+        <a class="cta-btn" href="#">Download free</a>
+    </div>
+
+    <div class="hero">
+        <div class="hero-h1">Everything you said.<br>Nowhere it shouldn't be.</div>
+        <div class="hero-sub">On-device transcription with speaker labels, 100+ languages, and AI that runs on your machine. offRecord captures your meetings, interviews, and ideas — and keeps them exactly where you'd expect: on your device, encrypted, searchable, yours.</div>
+        <a class="cta-btn" href="#">Get offRecord</a>
+    </div>
+
+    <div class="hero">
+        <div class="hero-h1">The recording that never<br>leaves the room.</div>
+        <div class="hero-sub">Transcription that processes locally. No cloud. No bot in your meeting. No data leaving your machine. offRecord is for people whose conversations are worth protecting.</div>
+        <a class="cta-btn" href="#">Download for Mac</a>
+    </div>
+
+    <!-- LANDING PAGE SCROLL NARRATIVE -->
+    <div class="card" style="margin-bottom: 32px;">
+        <div class="card-label">Landing Page Scroll Narrative</div>
+
+        <div class="scroll-section">
+            <div class="scroll-label">The Contradiction</div>
+            <div class="scroll-content">
+                <h3>It records. It's off the record.</h3>
+                <p>Every other transcription tool uploads your audio to a server. offRecord processes everything on your device. The recording exists. The cloud doesn't know about it. Both statements are true. That's the point.</p>
+            </div>
+        </div>
+
+        <div class="scroll-section">
+            <div class="scroll-label">The Intelligence</div>
+            <div class="scroll-content">
+                <h3>Real-time questions. Whispered to you.</h3>
+                <p>While you're in the meeting, offRecord analyses the live transcript and surfaces the question you should ask next, the contradiction worth probing, the action item forming. Read it. Ask it. Look brilliant. That's the unfair advantage.</p>
+            </div>
+        </div>
+
+        <div class="scroll-section">
+            <div class="scroll-label">The Archive</div>
+            <div class="scroll-content">
+                <h3>Search six months of conversations in six seconds.</h3>
+                <p>offRecord builds a searchable, encrypted archive of everything you've recorded. Ask AI questions across thousands of hours. Find the exact moment someone said the thing that matters. The archive compounds. The value never stops growing.</p>
+            </div>
+        </div>
+
+        <div class="scroll-section">
+            <div class="scroll-label">The Economics</div>
+            <div class="scroll-content">
+                <h3>Your current tool charges 1,500% markup. Here's the receipt.</h3>
+                <p>Cloud transcription costs &euro;0.006 per minute at wholesale. Most tools charge &euro;0.05 to &euro;0.10. offRecord charges cost plus 10%. Local transcription is unlimited and free. We publish the math because the math is on our side.</p>
+            </div>
+        </div>
+
+        <div class="scroll-section">
+            <div class="scroll-label">Invisible Capture</div>
+            <div class="scroll-content">
+                <h3>No bot. No notification. No one knows.</h3>
+                <p>offRecord captures audio directly from your system. It doesn't inject a participant into your Zoom call. It doesn't pop up in the meeting attendee list. The capture is invisible because it's local. Your meeting, your recording, nobody else's business.</p>
+            </div>
+        </div>
+
+        <div class="scroll-section">
+            <div class="scroll-label">For Those Who</div>
+            <div class="scroll-content">
+                <h3>Handle conversations that can't leak.</h3>
+                <p>Journalists protecting sources. Lawyers in privileged conversations. Therapists, researchers, doctors. Executives discussing strategy that doesn't belong on someone else's server. offRecord was built for the conversations that matter most.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- APP STORE -->
+    <div class="card-label" style="padding: 0 0 12px;">APP STORE LISTINGS</div>
+    <div class="cards cards-3" style="margin-bottom: 32px;">
+        <div class="appstore-card">
+            <div class="appstore-icon" style="color: var(--accent-off);">oR</div>
+            <div class="appstore-meta">
+                <div class="appstore-title">offRecord - Transcribe Local</div>
+                <div class="appstore-subtitle">Your audio never uploads.</div>
+                <div class="appstore-desc">On-device transcription with speaker labels and AI you control. No cloud. No bots. No data leaves your Mac. Free forever for local processing.</div>
+                <div class="char-count">Title: 30 chars | Subtitle: 25 chars</div>
+            </div>
+        </div>
+        <div class="appstore-card">
+            <div class="appstore-icon" style="color: var(--accent-off);">oR</div>
+            <div class="appstore-meta">
+                <div class="appstore-title">offRecord: Private Transcribe</div>
+                <div class="appstore-subtitle">Record it. Keep it. Yours.</div>
+                <div class="appstore-desc">It records everything. None of it leaves your device. offRecord is transcription that stays off the cloud, off the server, and off limits to anyone but you.</div>
+                <div class="char-count">Title: 30 chars | Subtitle: 26 chars</div>
+            </div>
+        </div>
+        <div class="appstore-card">
+            <div class="appstore-icon" style="color: var(--accent-off);">oR</div>
+            <div class="appstore-meta">
+                <div class="appstore-title">offRecord - Voice Vault</div>
+                <div class="appstore-subtitle">On-device. Zero knowledge.</div>
+                <div class="appstore-desc">Capture meetings without a bot. Transcribe on your Mac. Search thousands of conversations. AI summaries, speaker labels, 100+ languages. All local. All private.</div>
+                <div class="char-count">Title: 24 chars | Subtitle: 27 chars</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADS -->
+    <div class="card-label" style="padding: 0 0 12px;">AD CONCEPTS</div>
+    <div class="cards cards-3" style="margin-bottom: 32px;">
+        <div class="ad-card">
+            <div class="ad-image" style="color: var(--accent-off); font-size: 22px;">It records.<br>It's off the record.</div>
+            <div class="ad-body">
+                <div class="ad-headline">Both are true.</div>
+                <div class="ad-text">On-device transcription that never uploads. offRecord. Free for Mac.</div>
+                <div class="ad-cta tag">Download Free</div>
+            </div>
+        </div>
+        <div class="ad-card">
+            <div class="ad-image" style="font-size: 16px; color: var(--text-secondary);">Your Zoom call has 4 people.<br>Your tool adds a 5th.<br><span style="color: var(--accent-off);">offRecord doesn't.</span></div>
+            <div class="ad-body">
+                <div class="ad-headline">No bot joins your meeting.</div>
+                <div class="ad-text">Captures system audio locally. Invisible to everyone. offRecord.</div>
+                <div class="ad-cta tag">Learn More</div>
+            </div>
+        </div>
+        <div class="ad-card">
+            <div class="ad-image" style="font-size: 15px; color: var(--text-secondary);">JOURNALIST.<br>THERAPIST.<br>LAWYER.<br>EXECUTIVE.<br><span style="font-size: 12px; color: var(--text-muted);">Your conversations can't afford<br>someone else's server.</span></div>
+            <div class="ad-body">
+                <div class="ad-headline">Built for protected conversations.</div>
+                <div class="ad-text">offRecord processes everything on your device. Encrypted. Local. Yours.</div>
+                <div class="ad-cta tag">Get offRecord</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SOCIAL BIOS -->
+    <div class="card-label" style="padding: 0 0 12px;">SOCIAL BIOS</div>
+    <div class="card" style="margin-bottom: 32px;">
+        <div class="bio-card">
+            <div class="bio-text">It records everything. None of it leaves your device. On-device transcription, AI you control, cost you can verify. Free for Mac.</div>
+            <div class="char-count">128 chars</div>
+        </div>
+        <div class="bio-card">
+            <div class="bio-text">On-device transcription for people whose conversations can't leak. No cloud. No bots. No uploads. Built in Germany.</div>
+            <div class="char-count">117 chars</div>
+        </div>
+        <div class="bio-card">
+            <div class="bio-text">The recording that never leaves the room. Transcribe locally. Search everything. Upload nothing. offRecord.</div>
+            <div class="char-count">109 chars</div>
+        </div>
+    </div>
+
+    <!-- NAMING EXTENSIONS -->
+    <div class="card-label" style="padding: 0 0 12px;">HOW THE NAME EXTENDS</div>
+    <div class="ext-grid" style="margin-bottom: 32px;">
+        <div class="ext-item">
+            <div class="ext-name accent">offRecord Pro</div>
+            <div class="ext-desc">Premium tier. E2E sync, analytics.</div>
+        </div>
+        <div class="ext-item">
+            <div class="ext-name accent">offRecord Credits</div>
+            <div class="ext-desc">Cloud API credits at cost+10%.</div>
+        </div>
+        <div class="ext-item">
+            <div class="ext-name accent">The Archive</div>
+            <div class="ext-desc">Your searchable voice library.</div>
+        </div>
+        <div class="ext-item">
+            <div class="ext-name accent">offRecord Live</div>
+            <div class="ext-desc">Real-time meeting intelligence.</div>
+        </div>
+        <div class="ext-item">
+            <div class="ext-name accent">offRecord for Teams</div>
+            <div class="ext-desc">Future team tier. Name scales.</div>
+        </div>
+        <div class="ext-item">
+            <div class="ext-name accent">"Go offRecord"</div>
+            <div class="ext-desc">Built-in verb. "Let me go offRecord on this."</div>
+        </div>
+    </div>
+
+    <!-- 15s VIDEO -->
+    <div class="card-label" style="padding: 0 0 12px;">15-SECOND SPOT: "THE CONTRADICTION"</div>
+    <div class="storyboard" style="margin-bottom: 32px;">
+        <div class="frame">
+            <div class="frame-visual" style="color: var(--text-primary); font-size: 18px;">It records.</div>
+            <div class="frame-meta">
+                <div class="timing">[0-3s]</div>
+                White text on black. Still. Simple.
+            </div>
+        </div>
+        <div class="frame">
+            <div class="frame-visual" style="color: var(--text-primary); font-size: 16px;">It's off<br>the record.</div>
+            <div class="frame-meta">
+                <div class="timing">[3-7s]</div>
+                Second line appears below. Beat.
+            </div>
+        </div>
+        <div class="frame">
+            <div class="frame-visual" style="color: var(--text-secondary); font-size: 12px;">On-device AI.<br>No cloud. No bots.<br>Your audio stays<br>on your machine.</div>
+            <div class="frame-meta">
+                <div class="timing">[7-12s]</div>
+                Liquid metal orb fades in behind text.
+            </div>
+        </div>
+        <div class="frame">
+            <div class="frame-visual" style="color: var(--accent-off); font-size: 24px;">offRecord</div>
+            <div class="frame-meta">
+                <div class="timing">[12-15s]</div>
+                offrecord.app &mdash; Download free.
+            </div>
+        </div>
+    </div>
+
+    <!-- WHY THIS NAME -->
+    <div class="card glow">
+        <div class="card-label">Why offRecord Works</div>
+        <div class="cards cards-2" style="margin-top: 16px; border: none; padding: 0;">
+            <div style="padding: 0;">
+                <h3 style="font-size: 16px; margin-bottom: 8px;">Strengths</h3>
+                <p style="font-size: 14px; color: var(--text-secondary);">&bull; Instant comprehension — "off the record" is universally understood<br>&bull; The contradiction IS the pitch: it records, but off the record<br>&bull; Journalistic credibility built into the name<br>&bull; Built-in verb: "Go offRecord," "offRecord that meeting"<br>&bull; Implies confidentiality without saying "privacy" or "secure"<br>&bull; The camelCase gives it a tech-forward edge<br>&bull; Memorable — the name is a one-line elevator pitch</p>
+            </div>
+            <div style="padding: 0;">
+                <h3 style="font-size: 16px; margin-bottom: 8px;">Considerations</h3>
+                <p style="font-size: 14px; color: var(--text-secondary);">&bull; Three syllables, not two — slightly less punchy<br>&bull; camelCase can cause capitalisation confusion in some contexts<br>&bull; "Off the record" could imply impermanence (the opposite of vault value)<br>&bull; Might sound like a podcast tool or journalism-only product<br>&bull; Potential legal naming complexity ("off the record" is a common phrase)<br>&bull; Domain availability: offrecord.app likely available, .com less certain</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ================================================ -->
+<!-- UNDERTONE -->
+<!-- ================================================ -->
+<section id="undertone" class="brand-section undertone">
+    <div class="brand-header">
+        <div class="brand-name">undertone</div>
+        <div class="brand-essence">The quiet signal beneath everything you say.</div>
+    </div>
+
+    <!-- Creative Territory -->
+    <div class="card glow" style="margin-bottom: 32px;">
+        <div class="card-label">Creative Territory</div>
+        <p>"Undertone" is the frequency you feel but don't hear. It's the meaning beneath the words, the signal under the noise. As a product name, it operates on three levels simultaneously: it's an audio term (the lower harmonic), a communication concept (the implied meaning), and a brand personality (understated, subtle, powerful-beneath-the-surface). This name doesn't announce itself — it implies depth. It connects directly to the product's voice territory: calm, confident, deliberately quiet. The liquid metal visualiser IS an undertone made visible. The all-lowercase styling is intentional — the name refuses to shout, just like the product.</p>
+    </div>
+
+    <!-- HERO OPTIONS -->
+    <div class="card-label" style="padding: 0 0 12px;">HERO OPTIONS</div>
+
+    <div class="hero glow">
+        <div class="hero-h1">Hear everything.<br>Expose nothing.</div>
+        <div class="hero-sub">undertone transcribes on your device. Your audio never reaches a server. No bot joins your meeting. No cloud processes your words. The intelligence happens here, on your machine, in silence.</div>
+        <a class="cta-btn" href="#">Download free</a>
+    </div>
+
+    <div class="hero">
+        <div class="hero-h1">The signal beneath your conversations.</div>
+        <div class="hero-sub">On-device transcription. Speaker recognition that learns your team. AI that whispers the right question in your ear, mid-meeting. A searchable vault of every word you've captured. All local. All private. All yours.</div>
+        <a class="cta-btn" href="#">Get undertone</a>
+    </div>
+
+    <div class="hero">
+        <div class="hero-h1">What your voice knows<br>that you forgot.</div>
+        <div class="hero-sub">undertone captures, transcribes, and makes searchable every conversation you have — on your device, with AI you control. Six months from now, you'll search for something someone said, and find it in seconds. That's the undertone.</div>
+        <a class="cta-btn" href="#">Download for Mac</a>
+    </div>
+
+    <!-- LANDING PAGE SCROLL NARRATIVE -->
+    <div class="card" style="margin-bottom: 32px;">
+        <div class="card-label">Landing Page Scroll Narrative</div>
+
+        <div class="scroll-section">
+            <div class="scroll-label">The Architecture</div>
+            <div class="scroll-content">
+                <h3>Your audio stays on your device. Full stop.</h3>
+                <p>undertone processes transcription locally using on-device AI. There is no server between your voice and your transcript. This is not a privacy toggle. It's how the product is built. The architecture is the guarantee.</p>
+            </div>
+        </div>
+
+        <div class="scroll-section">
+            <div class="scroll-label">The Intelligence</div>
+            <div class="scroll-content">
+                <h3>The question you should ask. Right now.</h3>
+                <p>While you're in the meeting, undertone is listening. It analyses the live transcript and surfaces insights: the question nobody's asked, the contradiction worth pressing, the action item forming. Glance down. Ask it. The room thinks you're a genius.</p>
+            </div>
+        </div>
+
+        <div class="scroll-section">
+            <div class="scroll-label">The Memory</div>
+            <div class="scroll-content">
+                <h3>A year of conversations. Twelve seconds to find any moment.</h3>
+                <p>Every recording becomes a permanent, searchable, speaker-labelled asset in your vault. Ask AI questions across thousands of hours. The undertone beneath your work life surfaces on demand: patterns, decisions, the thing someone said that you almost forgot. Almost.</p>
+            </div>
+        </div>
+
+        <div class="scroll-section">
+            <div class="scroll-label">The Economics</div>
+            <div class="scroll-content">
+                <h3>The actual cost of transcription is &euro;0.006 per minute.</h3>
+                <p>Not &euro;0.05. Not &euro;0.10. The wholesale API price is a fraction of what most tools charge. undertone shows you the real number and adds 10%. Local transcription is unlimited and free. The margin is the product. The transparency is the weapon.</p>
+            </div>
+        </div>
+
+        <div class="scroll-section">
+            <div class="scroll-label">The Capture</div>
+            <div class="scroll-content">
+                <h3>Nobody knows you're recording.</h3>
+                <p>undertone captures system audio directly from your device. No bot appears in the meeting. No notification pops up for other participants. The capture is local, silent, and invisible. Just like the undertone itself.</p>
+            </div>
+        </div>
+
+        <div class="scroll-section">
+            <div class="scroll-label">For</div>
+            <div class="scroll-content">
+                <h3>People whose words carry weight.</h3>
+                <p>Journalists who protect sources. Researchers handling sensitive material. Therapists, lawyers, executives. Professionals with ADHD who need capture they can trust without cognitive overhead. Built in Germany. Encrypted at rest. Your words, precisely where you left them.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- APP STORE -->
+    <div class="card-label" style="padding: 0 0 12px;">APP STORE LISTINGS</div>
+    <div class="cards cards-3" style="margin-bottom: 32px;">
+        <div class="appstore-card">
+            <div class="appstore-icon" style="color: var(--accent-under); font-size: 18px;">u</div>
+            <div class="appstore-meta">
+                <div class="appstore-title">undertone - Transcribe Local</div>
+                <div class="appstore-subtitle">On-device. Private. Yours.</div>
+                <div class="appstore-desc">Your audio never leaves your Mac. On-device transcription with speaker labels, 100+ languages, and AI you choose. Free forever for local processing.</div>
+                <div class="char-count">Title: 30 chars | Subtitle: 25 chars</div>
+            </div>
+        </div>
+        <div class="appstore-card">
+            <div class="appstore-icon" style="color: var(--accent-under); font-size: 18px;">u</div>
+            <div class="appstore-meta">
+                <div class="appstore-title">undertone: Voice Intelligence</div>
+                <div class="appstore-subtitle">The signal beneath your voice.</div>
+                <div class="appstore-desc">Capture meetings without a bot. Transcribe on your device. Search years of conversations. AI that whispers the right question while you're still in the meeting.</div>
+                <div class="char-count">Title: 30 chars | Subtitle: 30 chars</div>
+            </div>
+        </div>
+        <div class="appstore-card">
+            <div class="appstore-icon" style="color: var(--accent-under); font-size: 18px;">u</div>
+            <div class="appstore-meta">
+                <div class="appstore-title">undertone - Private Transcribe</div>
+                <div class="appstore-subtitle">Hear everything. Expose nothing.</div>
+                <div class="appstore-desc">On-device AI processes your audio locally. No uploads, no cloud, no bots. Speaker recognition that learns. A searchable vault that compounds. The quiet tool for serious work.</div>
+                <div class="char-count">Title: 31 chars | Subtitle: 32 chars</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADS -->
+    <div class="card-label" style="padding: 0 0 12px;">AD CONCEPTS</div>
+    <div class="cards cards-3" style="margin-bottom: 32px;">
+        <div class="ad-card">
+            <div class="ad-image" style="color: var(--accent-under); font-size: 22px;">Hear everything.<br>Expose nothing.</div>
+            <div class="ad-body">
+                <div class="ad-headline">On-device transcription.</div>
+                <div class="ad-text">Your audio never uploads. Your meetings stay yours. undertone. Free for Mac.</div>
+                <div class="ad-cta tag">Download Free</div>
+            </div>
+        </div>
+        <div class="ad-card">
+            <div class="ad-image" style="font-size: 14px; color: var(--text-secondary);">While you're in the meeting,<br>undertone is listening.<br><br><span style="color: var(--accent-under);">It surfaces the question<br>you should ask next.</span></div>
+            <div class="ad-body">
+                <div class="ad-headline">The career accelerator hiding in your menu bar.</div>
+                <div class="ad-text">Real-time meeting intelligence. On-device. Private. undertone.</div>
+                <div class="ad-cta tag">Learn More</div>
+            </div>
+        </div>
+        <div class="ad-card">
+            <div class="ad-image" style="font-size: 15px; color: var(--text-secondary);">Your transcription tool<br>charges &euro;0.10/min.<br><br><span style="font-size:12px; color: var(--text-muted);">The API costs &euro;0.006.</span><br><span style="color: var(--accent-under); font-size:16px;">We show you both numbers.</span></div>
+            <div class="ad-body">
+                <div class="ad-headline">The quiet truth about transcription pricing.</div>
+                <div class="ad-text">Cost+10%. Local is free. The math is on our side. undertone.</div>
+                <div class="ad-cta tag">See the Math</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SOCIAL BIOS -->
+    <div class="card-label" style="padding: 0 0 12px;">SOCIAL BIOS</div>
+    <div class="card" style="margin-bottom: 32px;">
+        <div class="bio-card">
+            <div class="bio-text">On-device transcription. Your audio never uploads. AI you control, cost you can verify. The quiet tool for serious work. Free for Mac.</div>
+            <div class="char-count">134 chars</div>
+        </div>
+        <div class="bio-card">
+            <div class="bio-text">The signal beneath your conversations. On-device voice intelligence. No cloud. No bots. No uploads. Built in Germany.</div>
+            <div class="char-count">118 chars</div>
+        </div>
+        <div class="bio-card">
+            <div class="bio-text">Hear everything. Expose nothing. Private transcription, searchable vault, live meeting intelligence. All on your device.</div>
+            <div class="char-count">122 chars</div>
+        </div>
+    </div>
+
+    <!-- NAMING EXTENSIONS -->
+    <div class="card-label" style="padding: 0 0 12px;">HOW THE NAME EXTENDS</div>
+    <div class="ext-grid" style="margin-bottom: 32px;">
+        <div class="ext-item">
+            <div class="ext-name accent">undertone pro</div>
+            <div class="ext-desc">Premium tier. Lowercase stays consistent.</div>
+        </div>
+        <div class="ext-item">
+            <div class="ext-name accent">undertone credits</div>
+            <div class="ext-desc">Cloud API at cost+10%.</div>
+        </div>
+        <div class="ext-item">
+            <div class="ext-name accent">the vault</div>
+            <div class="ext-desc">Your searchable voice library.</div>
+        </div>
+        <div class="ext-item">
+            <div class="ext-name accent">undertone live</div>
+            <div class="ext-desc">Real-time meeting intelligence.</div>
+        </div>
+        <div class="ext-item">
+            <div class="ext-name accent">undertone for teams</div>
+            <div class="ext-desc">Future team tier.</div>
+        </div>
+        <div class="ext-item">
+            <div class="ext-name accent">"the undertone"</div>
+            <div class="ext-desc">"Did you catch the undertone?" — ambient metaphor.</div>
+        </div>
+    </div>
+
+    <!-- 15s VIDEO -->
+    <div class="card-label" style="padding: 0 0 12px;">15-SECOND SPOT: "THE FREQUENCY"</div>
+    <div class="storyboard" style="margin-bottom: 32px;">
+        <div class="frame">
+            <div class="frame-visual" style="color: var(--text-muted); font-size: 13px;">Low hum.<br>Dark screen.<br>Liquid metal orb<br>barely visible.</div>
+            <div class="frame-meta">
+                <div class="timing">[0-4s]</div>
+                "There's a signal beneath every conversation."
+            </div>
+        </div>
+        <div class="frame">
+            <div class="frame-visual" style="color: var(--text-muted); font-size: 13px;">Orb responds to<br>audio waveform.<br>Pulsing. Alive.</div>
+            <div class="frame-meta">
+                <div class="timing">[4-8s]</div>
+                "The insight. The action. The thing you almost missed."
+            </div>
+        </div>
+        <div class="frame">
+            <div class="frame-visual" style="color: var(--text-muted); font-size: 13px;">Transcript text<br>flows across orb.<br>Words highlight.</div>
+            <div class="frame-meta">
+                <div class="timing">[8-12s]</div>
+                "undertone captures it. On your device. Privately."
+            </div>
+        </div>
+        <div class="frame">
+            <div class="frame-visual" style="color: var(--accent-under); font-size: 20px;">undertone</div>
+            <div class="frame-meta">
+                <div class="timing">[12-15s]</div>
+                undertone.app &mdash; Download free.
+            </div>
+        </div>
+    </div>
+
+    <!-- WHY THIS NAME -->
+    <div class="card glow">
+        <div class="card-label">Why undertone Works</div>
+        <div class="cards cards-2" style="margin-top: 16px; border: none; padding: 0;">
+            <div style="padding: 0;">
+                <h3 style="font-size: 16px; margin-bottom: 8px;">Strengths</h3>
+                <p style="font-size: 14px; color: var(--text-secondary);">&bull; Triple meaning: audio term + communication concept + brand personality<br>&bull; Directly connects to the "understated/calm" whitespace (1.7% of market)<br>&bull; The liquid metal visualiser IS an undertone made visible<br>&bull; All-lowercase reinforces the "we don't shout" positioning<br>&bull; Category-transcending — doesn't sound like "just a transcription tool"<br>&bull; Beautiful to say. The word has rhythm and weight.<br>&bull; Extensible: undertone pro, undertone live, undertone for teams</p>
+            </div>
+            <div style="padding: 0;">
+                <h3 style="font-size: 16px; margin-bottom: 8px;">Considerations</h3>
+                <p style="font-size: 14px; color: var(--text-secondary);">&bull; Three syllables, not two<br>&bull; Less immediate comprehension than offRecord — "what does it do?" takes a beat longer<br>&bull; "Undertone" can have negative connotation ("racial undertones," "threatening undertone")<br>&bull; All-lowercase may cause friction in formal/enterprise contexts<br>&bull; Doesn't inherently communicate privacy or recording<br>&bull; Domain: undertone.app likely available. undertone.com almost certainly taken.<br>&bull; More abstract — requires stronger surrounding copy to land</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ================================================ -->
+<!-- COMPARISON -->
+<!-- ================================================ -->
+<section class="brand-section" style="padding-bottom: 80px;">
+    <div class="brand-header" style="padding-bottom: 40px;">
+        <div style="font-size: 14px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: var(--text-muted);">Side-by-Side Comparison</div>
+    </div>
+
+    <div class="card">
+        <table class="compare-table">
+            <thead>
+                <tr>
+                    <th style="width: 22%;">Dimension</th>
+                    <th style="width: 26%; color: var(--accent-hush);">Hushmark</th>
+                    <th style="width: 26%; color: var(--accent-off);">offRecord</th>
+                    <th style="width: 26%; color: var(--accent-under);">undertone</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="color: var(--text-muted); font-size: 12px; letter-spacing: 1px; text-transform: uppercase;">Personality</td>
+                    <td>Quiet authority. The standard-setter.</td>
+                    <td>Clever confidence. The truth-teller.</td>
+                    <td>Poetic depth. The one that lingers.</td>
+                </tr>
+                <tr>
+                    <td style="color: var(--text-muted); font-size: 12px; letter-spacing: 1px; text-transform: uppercase;">Syllables</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td style="color: var(--text-muted); font-size: 12px; letter-spacing: 1px; text-transform: uppercase;">Instant clarity</td>
+                    <td>Medium — "hush" signals privacy, "mark" less clear</td>
+                    <td>High — "off the record" is universally understood</td>
+                    <td>Lower — beautiful but abstract, needs copy support</td>
+                </tr>
+                <tr>
+                    <td style="color: var(--text-muted); font-size: 12px; letter-spacing: 1px; text-transform: uppercase;">Verb potential</td>
+                    <td>"Hushmark that meeting"</td>
+                    <td>"Go offRecord on this call"</td>
+                    <td>Less natural as a verb</td>
+                </tr>
+                <tr>
+                    <td style="color: var(--text-muted); font-size: 12px; letter-spacing: 1px; text-transform: uppercase;">Audience signal</td>
+                    <td>Security-conscious professionals</td>
+                    <td>Journalists, legal, confidential work</td>
+                    <td>Creative professionals, deep thinkers</td>
+                </tr>
+                <tr>
+                    <td style="color: var(--text-muted); font-size: 12px; letter-spacing: 1px; text-transform: uppercase;">Brand feel</td>
+                    <td>Signal, Mullvad, 1Password</td>
+                    <td>The Intercept, ProtonMail, Arc</td>
+                    <td>Obsidian, Things 3, Linear</td>
+                </tr>
+                <tr>
+                    <td style="color: var(--text-muted); font-size: 12px; letter-spacing: 1px; text-transform: uppercase;">Whitespace fit</td>
+                    <td>Privacy-led + calm tone. Direct hit on the two biggest gaps.</td>
+                    <td>Contrast framing + privacy conviction. The name IS the pitch.</td>
+                    <td>Understated tone + craft register. Occupies the 1.7% calm energy whitespace perfectly.</td>
+                </tr>
+                <tr>
+                    <td style="color: var(--text-muted); font-size: 12px; letter-spacing: 1px; text-transform: uppercase;">Risk</td>
+                    <td>Could read as serious/enterprise-only</td>
+                    <td>Could sound journalism-niche or impermanent</td>
+                    <td>Could be too abstract; negative connotation risk</td>
+                </tr>
+                <tr>
+                    <td style="color: var(--text-muted); font-size: 12px; letter-spacing: 1px; text-transform: uppercase;">Visual identity</td>
+                    <td>Monogram "H" on dark glass. Watermark motif.</td>
+                    <td>Italic "oR" mark. Redacted/classified aesthetic.</td>
+                    <td>Lowercase wordmark. Liquid metal orb IS the logo.</td>
+                </tr>
+                <tr>
+                    <td style="color: var(--text-muted); font-size: 12px; letter-spacing: 1px; text-transform: uppercase;">Best H1</td>
+                    <td style="color: var(--text-primary);">"Your voice stays yours."</td>
+                    <td style="color: var(--text-primary);">"It records everything. None of it leaves your device."</td>
+                    <td style="color: var(--text-primary);">"Hear everything. Expose nothing."</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<div style="text-align: center; padding: 40px 24px 80px; color: var(--text-muted); font-size: 12px;">
+    Quiet Thunder Project &mdash; Ultramoon GmbH &mdash; March 2026<br>
+    Copy grounded in competitive census of 589 elements across 36 brands.
+</div>
+
+</body>
+</html>
