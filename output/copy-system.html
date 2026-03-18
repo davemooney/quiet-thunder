@@ -1,0 +1,1651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capsule — Copy System</title>
+    <style>
+        /* ============================================
+           CAPSULE COPY SYSTEM — ALL CSS INLINE
+           No external dependencies
+           ============================================ */
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --bg-tertiary: #1a1a1a;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --bg-card-hover: rgba(255, 255, 255, 0.05);
+            --bg-glass: rgba(255, 255, 255, 0.04);
+            --border-subtle: rgba(255, 255, 255, 0.06);
+            --border-medium: rgba(255, 255, 255, 0.10);
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --text-tertiary: #666666;
+            --accent-silver: #c0c0c0;
+            --accent-blue: #8fa3b0;
+            --accent-blue-dim: rgba(143, 163, 176, 0.15);
+            --font-stack: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-xl: 24px;
+        }
+
+        html {
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: var(--font-stack);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 16px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .nav-logo {
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: var(--text-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Section Container */
+        .section {
+            padding: 120px 40px 80px;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent-blue);
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 300;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-subtitle {
+            font-size: 15px;
+            color: var(--text-tertiary);
+            margin-bottom: 60px;
+            max-width: 600px;
+        }
+
+        .divider {
+            height: 1px;
+            background: var(--border-subtle);
+            margin: 0 40px;
+            max-width: 1360px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ============================================
+           SECTION 1: HERO OPTIONS
+           ============================================ */
+
+        .hero-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .hero-card {
+            position: relative;
+            width: 100%;
+            min-height: 500px;
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 80px 60px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+        }
+
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+        }
+
+        .hero-variant-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent-blue);
+            margin-bottom: 40px;
+        }
+
+        .hero-h1 {
+            font-size: 56px;
+            font-weight: 300;
+            letter-spacing: -1.5px;
+            line-height: 1.15;
+            color: var(--text-primary);
+            margin-bottom: 24px;
+            max-width: 800px;
+        }
+
+        .hero-sub {
+            font-size: 19px;
+            font-weight: 300;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            max-width: 560px;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 14px 36px;
+            border-radius: 100px;
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .hero-cta:hover {
+            opacity: 0.9;
+        }
+
+        .hero-cta-outline {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border-medium);
+        }
+
+        .hero-cta-outline:hover {
+            border-color: rgba(255,255,255,0.25);
+        }
+
+        /* ============================================
+           SECTION 2: SCROLL NARRATIVE
+           ============================================ */
+
+        .narrative-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .narrative-card {
+            padding: 48px 40px;
+            border-radius: var(--radius-lg);
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            position: relative;
+        }
+
+        .narrative-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+        }
+
+        .narrative-card.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .narrative-number {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: var(--accent-blue);
+            margin-bottom: 20px;
+        }
+
+        .narrative-headline {
+            font-size: 28px;
+            font-weight: 300;
+            letter-spacing: -0.5px;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            line-height: 1.25;
+        }
+
+        .narrative-body {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            max-width: 520px;
+        }
+
+        /* ============================================
+           SECTION 3: APP STORE
+           ============================================ */
+
+        .appstore-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .appstore-card {
+            padding: 40px 32px;
+            border-radius: var(--radius-lg);
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .appstore-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+            border: 1px solid var(--border-medium);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 300;
+            color: var(--accent-blue);
+        }
+
+        .appstore-title {
+            font-size: 17px;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .appstore-subtitle {
+            font-size: 14px;
+            color: var(--accent-blue);
+            margin-bottom: 16px;
+        }
+
+        .appstore-desc {
+            font-size: 13px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        .appstore-charcount {
+            font-size: 11px;
+            color: var(--text-tertiary);
+            margin-top: 12px;
+            font-family: 'SF Mono', 'Menlo', monospace;
+        }
+
+        /* ============================================
+           SECTION 4: PRICING
+           ============================================ */
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .pricing-header h2 {
+            font-size: 40px;
+            font-weight: 300;
+            letter-spacing: -1px;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        .pricing-header p {
+            font-size: 17px;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            max-width: 900px;
+            margin: 0 auto 80px;
+        }
+
+        .pricing-card {
+            padding: 48px 40px;
+            border-radius: var(--radius-xl);
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--accent-blue);
+            background: var(--accent-blue-dim);
+        }
+
+        .pricing-card.featured::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
+        }
+
+        .pricing-plan-name {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent-blue);
+            margin-bottom: 8px;
+        }
+
+        .pricing-price {
+            font-size: 48px;
+            font-weight: 200;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+            letter-spacing: -1px;
+        }
+
+        .pricing-price span {
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--text-tertiary);
+        }
+
+        .pricing-tagline {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-weight: 300;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        .pricing-features li {
+            font-size: 14px;
+            color: var(--text-secondary);
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pricing-features li::before {
+            content: '';
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--accent-blue);
+            flex-shrink: 0;
+        }
+
+        .pricing-cta {
+            display: block;
+            width: 100%;
+            padding: 14px 24px;
+            border-radius: 100px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .pricing-cta-primary {
+            background: var(--text-primary);
+            color: var(--bg-primary);
+        }
+
+        .pricing-cta-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border-medium);
+        }
+
+        /* Markup Comparison */
+        .markup-section {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .markup-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .markup-header h3 {
+            font-size: 28px;
+            font-weight: 300;
+            letter-spacing: -0.5px;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .markup-header p {
+            font-size: 15px;
+            color: var(--text-tertiary);
+        }
+
+        .markup-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 24px;
+        }
+
+        .markup-table th {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-tertiary);
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-medium);
+        }
+
+        .markup-table td {
+            font-size: 15px;
+            padding: 20px;
+            border-bottom: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+        }
+
+        .markup-table tr.highlight td {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .markup-table .markup-bad {
+            color: #b07070;
+        }
+
+        .markup-table .markup-good {
+            color: var(--accent-blue);
+            font-weight: 500;
+        }
+
+        .markup-footnote {
+            font-size: 14px;
+            color: var(--text-tertiary);
+            text-align: center;
+            font-style: italic;
+        }
+
+        /* ============================================
+           SECTION 5: AD CARDS
+           ============================================ */
+
+        .ads-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+
+        .ads-format-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent-blue);
+            margin-bottom: 24px;
+        }
+
+        /* Facebook Ads */
+        .fb-ads-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .fb-ad {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .fb-ad-image {
+            width: 100%;
+            aspect-ratio: 1200 / 628;
+            background: linear-gradient(135deg, #111111, #1a1a1a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .fb-ad-image-text {
+            font-size: 24px;
+            font-weight: 300;
+            color: var(--text-primary);
+            text-align: center;
+            letter-spacing: -0.5px;
+            line-height: 1.3;
+        }
+
+        .fb-ad-body {
+            padding: 20px 24px;
+        }
+
+        .fb-ad-headline {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+
+        .fb-ad-text {
+            font-size: 13px;
+            line-height: 1.5;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .fb-ad-cta {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 6px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-medium);
+            color: var(--text-primary);
+            font-size: 12px;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .fb-ad-charcount {
+            font-size: 10px;
+            color: var(--text-tertiary);
+            margin-top: 8px;
+            font-family: 'SF Mono', 'Menlo', monospace;
+        }
+
+        /* Instagram Stories */
+        .ig-stories-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .ig-story {
+            aspect-ratio: 1080 / 1920;
+            max-height: 560px;
+            border-radius: var(--radius-lg);
+            background: linear-gradient(180deg, #0a0a0a 0%, #151520 50%, #0a0a0a 100%);
+            border: 1px solid var(--border-subtle);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 28px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ig-story::before {
+            content: '';
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 3px;
+            border-radius: 2px;
+            background: rgba(255,255,255,0.15);
+        }
+
+        .ig-story-primary {
+            font-size: 22px;
+            font-weight: 300;
+            color: var(--text-primary);
+            line-height: 1.35;
+            letter-spacing: -0.3px;
+            margin-bottom: 20px;
+        }
+
+        .ig-story-secondary {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 32px;
+        }
+
+        .ig-story-cta {
+            padding: 10px 28px;
+            border-radius: 100px;
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            font-size: 12px;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        /* Google Search Ads */
+        .google-ads-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .google-ad {
+            padding: 24px 28px;
+            border-radius: var(--radius-md);
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .google-ad-label {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-tertiary);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .google-ad-label::before {
+            content: 'Ad';
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 3px;
+            background: rgba(143, 163, 176, 0.2);
+            color: var(--accent-blue);
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .google-ad-url {
+            font-size: 12px;
+            color: var(--text-tertiary);
+            margin-bottom: 6px;
+        }
+
+        .google-ad-headline {
+            font-size: 18px;
+            font-weight: 400;
+            color: var(--accent-blue);
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+
+        .google-ad-desc {
+            font-size: 13px;
+            line-height: 1.5;
+            color: var(--text-secondary);
+        }
+
+        .google-ad-charcount {
+            font-size: 10px;
+            color: var(--text-tertiary);
+            margin-top: 10px;
+            font-family: 'SF Mono', 'Menlo', monospace;
+        }
+
+        /* ============================================
+           SECTION 6: SOCIAL
+           ============================================ */
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        /* Twitter Profile */
+        .twitter-profile {
+            border-radius: var(--radius-lg);
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            overflow: hidden;
+        }
+
+        .twitter-banner {
+            height: 120px;
+            background: linear-gradient(135deg, #111118, #1a1a22);
+        }
+
+        .twitter-profile-body {
+            padding: 20px 28px 28px;
+            position: relative;
+        }
+
+        .twitter-avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+            border: 3px solid var(--bg-primary);
+            position: absolute;
+            top: -32px;
+            left: 28px;
+        }
+
+        .twitter-name {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-top: 36px;
+            margin-bottom: 2px;
+        }
+
+        .twitter-handle {
+            font-size: 14px;
+            color: var(--text-tertiary);
+            margin-bottom: 12px;
+        }
+
+        .twitter-bio {
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .twitter-bio-charcount {
+            font-size: 10px;
+            color: var(--text-tertiary);
+            font-family: 'SF Mono', 'Menlo', monospace;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .bio-option-label {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--accent-blue);
+            margin-bottom: 4px;
+        }
+
+        /* OG Card */
+        .og-card {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .og-card-image {
+            height: 200px;
+            background: linear-gradient(135deg, #0a0a12, #1a1a22);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 32px;
+        }
+
+        .og-card-image-text {
+            font-size: 24px;
+            font-weight: 300;
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
+        }
+
+        .og-card-body {
+            padding: 20px 24px;
+        }
+
+        .og-card-url {
+            font-size: 11px;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .og-card-title {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+
+        .og-card-desc {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        /* ============================================
+           SECTION 7: VIDEO
+           ============================================ */
+
+        .video-storyboard {
+            margin-bottom: 60px;
+        }
+
+        .video-concept-title {
+            font-size: 22px;
+            font-weight: 400;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .video-concept-subtitle {
+            font-size: 14px;
+            color: var(--text-tertiary);
+            margin-bottom: 32px;
+        }
+
+        .frames-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+        }
+
+        .frame {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .frame-viewport {
+            aspect-ratio: 16 / 9;
+            background: linear-gradient(180deg, #0a0a0a, #111115);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .frame-text {
+            font-size: 15px;
+            font-weight: 300;
+            color: var(--text-primary);
+            line-height: 1.4;
+            letter-spacing: -0.2px;
+        }
+
+        .frame-text .accent {
+            color: var(--accent-blue);
+        }
+
+        .frame-meta {
+            padding: 10px 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .frame-time {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--accent-blue);
+            font-family: 'SF Mono', 'Menlo', monospace;
+        }
+
+        .frame-note {
+            font-size: 10px;
+            color: var(--text-tertiary);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 80px 40px 40px;
+            text-align: center;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        .footer-text {
+            font-size: 13px;
+            color: var(--text-tertiary);
+        }
+
+        /* Utility */
+        .tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 100px;
+            background: var(--accent-blue-dim);
+            color: var(--accent-blue);
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 900px) {
+            .section { padding: 80px 20px 60px; }
+            .narrative-grid { grid-template-columns: 1fr; }
+            .appstore-grid { grid-template-columns: 1fr; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .fb-ads-grid { grid-template-columns: 1fr; }
+            .ig-stories-grid { grid-template-columns: repeat(2, 1fr); }
+            .google-ads-grid { grid-template-columns: 1fr; }
+            .social-grid { grid-template-columns: 1fr; }
+            .hero-h1 { font-size: 36px; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-logo">Capsule Copy System</div>
+        <ul class="nav-links">
+            <li><a href="#hero">Hero</a></li>
+            <li><a href="#narrative">Narrative</a></li>
+            <li><a href="#appstore">App Store</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#ads">Ads</a></li>
+            <li><a href="#social">Social</a></li>
+            <li><a href="#video">Video</a></li>
+        </ul>
+    </nav>
+
+    <!-- ============================================
+         SECTION 1: LANDING PAGE HERO OPTIONS
+         ============================================ -->
+    <section id="hero" class="section" style="padding-top: 100px;">
+        <div class="section-label">Section 1</div>
+        <div class="section-title">Landing Page Hero Options</div>
+        <div class="section-subtitle">5 structurally distinct hero treatments. Each avoids the noun-led plain statement pattern used by 59.4% of competitors and the startup register used by 89.8%.</div>
+
+        <div class="hero-grid">
+
+            <!-- Hero A -->
+            <div class="hero-card">
+                <div class="hero-variant-label">Variant A — Contrast / Negative Framing</div>
+                <h1 class="hero-h1">Your words never leave your device.</h1>
+                <p class="hero-sub">On-device transcription that processes everything locally. No cloud, no bots, no intermediary. Free forever.</p>
+                <a href="#" class="hero-cta">Download Capsule</a>
+            </div>
+
+            <!-- Hero B -->
+            <div class="hero-card">
+                <div class="hero-variant-label">Variant B — Statistic-Led</div>
+                <h1 class="hero-h1">0 bytes uploaded.<br>Every word captured.</h1>
+                <p class="hero-sub">Capsule transcribes on your machine using on-device AI. Your audio never touches a server unless you choose cloud credits.</p>
+                <a href="#" class="hero-cta">Download free</a>
+            </div>
+
+            <!-- Hero C -->
+            <div class="hero-card">
+                <div class="hero-variant-label">Variant C — Calm Imperative</div>
+                <h1 class="hero-h1">Keep your voice.</h1>
+                <p class="hero-sub">Private transcription for journalists, researchers, and professionals who can't afford to have their conversations leaked. On-device AI. Free locally.</p>
+                <div style="display: flex; gap: 12px;">
+                    <a href="#" class="hero-cta">Download Capsule</a>
+                    <a href="#" class="hero-cta hero-cta-outline">See how it works</a>
+                </div>
+            </div>
+
+            <!-- Hero D -->
+            <div class="hero-card">
+                <div class="hero-variant-label">Variant D — Metaphor / Editorial</div>
+                <h1 class="hero-h1">Transcription that never phones home.</h1>
+                <p class="hero-sub">Other tools upload your audio to process it. Capsule doesn't. On-device AI transcription with cloud credits at cost plus ten percent.</p>
+                <a href="#" class="hero-cta">Download free</a>
+            </div>
+
+            <!-- Hero E -->
+            <div class="hero-card">
+                <div class="hero-variant-label">Variant E — Problem Framing / Contrast</div>
+                <h1 class="hero-h1">Record everything. Upload nothing.</h1>
+                <p class="hero-sub">A transcription tool built for people with something to protect. On-device processing, no account required, free forever locally.</p>
+                <a href="#" class="hero-cta">Download Capsule</a>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ============================================
+         SECTION 2: SCROLL NARRATIVE
+         ============================================ -->
+    <section id="narrative" class="section">
+        <div class="section-label">Section 2</div>
+        <div class="section-title">Landing Page Scroll Narrative</div>
+        <div class="section-subtitle">6 sections in scroll order, telling the full Capsule story from privacy through to action.</div>
+
+        <div class="narrative-grid">
+
+            <!-- 1: Privacy -->
+            <div class="narrative-card">
+                <div class="narrative-number">01 — PRIVACY</div>
+                <h2 class="narrative-headline">Your audio never leaves.</h2>
+                <p class="narrative-body">Capsule processes transcription on your device. There is no server between your voice and your transcript. No upload. No intermediary. No exception — unless you explicitly choose cloud credits for longer files.</p>
+            </div>
+
+            <!-- 2: How It Works -->
+            <div class="narrative-card">
+                <div class="narrative-number">02 — HOW IT WORKS</div>
+                <h2 class="narrative-headline">On-device AI. Off-device? Only if you say so.</h2>
+                <p class="narrative-body">Local mode uses your machine's processor — free, forever, no account required. For longer recordings or higher accuracy, cloud credits use the same APIs as every other tool. The difference is what we charge you.</p>
+            </div>
+
+            <!-- 3: Cost -->
+            <div class="narrative-card">
+                <div class="narrative-number">03 — COST TRANSPARENCY</div>
+                <h2 class="narrative-headline">We'll show you the receipt.</h2>
+                <p class="narrative-body">AI transcription costs roughly &euro;0.006 per minute at wholesale. Most tools charge &euro;0.05 to &euro;0.10 — a 700% to 1,500% markup. Capsule charges &euro;0.0066. Here is the math. Here is the margin. That is the entire business model.</p>
+            </div>
+
+            <!-- 4: Experience -->
+            <div class="narrative-card">
+                <div class="narrative-number">04 — THE EXPERIENCE</div>
+                <h2 class="narrative-headline">No bot joins your call.</h2>
+                <p class="narrative-body">Capsule captures audio directly from your device. It does not inject a participant into your meeting. Nobody sees a notification. Nobody wonders who is recording. The capture is invisible because the capture is local.</p>
+            </div>
+
+            <!-- 5: Trust -->
+            <div class="narrative-card">
+                <div class="narrative-number">05 — BUILT FOR</div>
+                <h2 class="narrative-headline">Built for the people with the most to protect.</h2>
+                <p class="narrative-body">Journalists protecting sources. Researchers handling sensitive interviews. Therapists, lawyers, executives. People with ADHD who need reliable capture without cognitive overhead. Capsule is for anyone whose work depends on confidential conversations.</p>
+            </div>
+
+            <!-- 6: CTA -->
+            <div class="narrative-card">
+                <div class="narrative-number">06 — GET STARTED</div>
+                <h2 class="narrative-headline">Quiet tools do the best work.</h2>
+                <p class="narrative-body">Download Capsule. Free local transcription, no account required. Cloud credits when you need them, at a price you can verify.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ============================================
+         SECTION 3: APP STORE LISTING PREVIEW
+         ============================================ -->
+    <section id="appstore" class="section">
+        <div class="section-label">Section 3</div>
+        <div class="section-title">App Store Listing Preview</div>
+        <div class="section-subtitle">3 variants. Each avoids the "AI" keyword in title (used by 57.1% of competitor titles) and leads with privacy or on-device positioning (0% of competitors).</div>
+
+        <div class="appstore-grid">
+
+            <!-- Variant 1 -->
+            <div class="appstore-card">
+                <div class="appstore-icon">C</div>
+                <div class="appstore-title">Capsule: Local Transcription</div>
+                <div class="appstore-subtitle">Private. On-device. Free.</div>
+                <p class="appstore-desc">Your audio never leaves your device. Capsule transcribes locally using on-device AI — no uploads, no cloud dependency, no account required. Free forever for local processing.</p>
+                <div class="appstore-charcount">Title: 28 chars / Subtitle: 25 chars</div>
+            </div>
+
+            <!-- Variant 2 -->
+            <div class="appstore-card">
+                <div class="appstore-icon">C</div>
+                <div class="appstore-title">Capsule &mdash; Transcribe Locally</div>
+                <div class="appstore-subtitle">No uploads. No bots. Free.</div>
+                <p class="appstore-desc">Other transcription tools upload your audio to distant servers. Capsule doesn't. On-device processing means your conversations stay on your machine. Free local transcription, cloud credits at cost+10%.</p>
+                <div class="appstore-charcount">Title: 28 chars / Subtitle: 26 chars</div>
+            </div>
+
+            <!-- Variant 3 -->
+            <div class="appstore-card">
+                <div class="appstore-icon">C</div>
+                <div class="appstore-title">Capsule: Private Voice Notes</div>
+                <div class="appstore-subtitle">On-device AI transcription.</div>
+                <p class="appstore-desc">Built for journalists, researchers, and anyone who handles sensitive conversations. Capsule transcribes on your device — your audio never touches a server. Free, private, and completely local.</p>
+                <div class="appstore-charcount">Title: 28 chars / Subtitle: 27 chars</div>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ============================================
+         SECTION 4: PRICING PAGE
+         ============================================ -->
+    <section id="pricing" class="section">
+        <div class="section-label">Section 4</div>
+        <div class="section-title">Pricing Page</div>
+        <div class="section-subtitle">Cost transparency framing. "Markup" appears 0 times across 589 competitor copy elements. This territory is entirely unoccupied.</div>
+
+        <div class="pricing-header">
+            <h2>Honest pricing for private transcription.</h2>
+            <p>Free because your machine does the work. Transparent when it doesn't.</p>
+        </div>
+
+        <div class="pricing-grid">
+
+            <!-- Free Plan -->
+            <div class="pricing-card">
+                <div class="pricing-plan-name">Local</div>
+                <div class="pricing-price">Free <span>forever</span></div>
+                <div class="pricing-tagline">Free because your machine does the work.</div>
+                <ul class="pricing-features">
+                    <li>On-device transcription — no server, no upload</li>
+                    <li>No account required</li>
+                    <li>No time limits on local processing</li>
+                    <li>Works offline</li>
+                    <li>Your audio never leaves your device</li>
+                </ul>
+                <a href="#" class="pricing-cta pricing-cta-secondary">Download Capsule</a>
+            </div>
+
+            <!-- Pro Plan -->
+            <div class="pricing-card featured">
+                <div class="pricing-plan-name">Pro</div>
+                <div class="pricing-price">&euro;9.99 <span>/month</span></div>
+                <div class="pricing-tagline">Everything local, plus cloud credits at honest rates.</div>
+                <ul class="pricing-features">
+                    <li>Everything in Local</li>
+                    <li>Cloud transcription credits at cost+10%</li>
+                    <li>Higher accuracy for long recordings</li>
+                    <li>Priority processing</li>
+                    <li>Multi-language support via cloud models</li>
+                    <li>Usage dashboard with per-minute cost breakdown</li>
+                </ul>
+                <a href="#" class="pricing-cta pricing-cta-primary">Start with Pro</a>
+            </div>
+
+        </div>
+
+        <!-- Markup Comparison -->
+        <div class="markup-section">
+            <div class="markup-header">
+                <h3>What AI transcription actually costs.</h3>
+                <p>Every transcription tool uses the same APIs. The difference is what they charge you.</p>
+            </div>
+
+            <table class="markup-table">
+                <thead>
+                    <tr>
+                        <th>Provider</th>
+                        <th>API Cost / Min</th>
+                        <th>Price You Pay / Min</th>
+                        <th>Markup</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Competitor average</td>
+                        <td>&sim;&euro;0.006</td>
+                        <td>&euro;0.05 &ndash; &euro;0.10</td>
+                        <td class="markup-bad">700 &ndash; 1,500%</td>
+                    </tr>
+                    <tr class="highlight">
+                        <td>Capsule Pro</td>
+                        <td>&sim;&euro;0.006</td>
+                        <td>&euro;0.0066</td>
+                        <td class="markup-good">10%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p class="markup-footnote">We publish our margin. We show the math. If the API price drops, your price drops.</p>
+        </div>
+
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ============================================
+         SECTION 5: AD CARD VARIANTS
+         ============================================ -->
+    <section id="ads" class="section">
+        <div class="section-label">Section 5</div>
+        <div class="section-title">Ad Card Variants</div>
+        <div class="section-subtitle">8 ad mockups across Facebook, Instagram, and Google Search. Each uses problem framing (2.4% of dataset), contrast (0.2%), or segment-specific targeting (2.5%).</div>
+
+        <div class="ads-grid">
+
+            <!-- Facebook Feed Ads -->
+            <div>
+                <div class="ads-format-label">Facebook Feed Ads (1200 x 628)</div>
+                <div class="fb-ads-grid">
+
+                    <!-- FB Ad 1 -->
+                    <div class="fb-ad">
+                        <div class="fb-ad-image">
+                            <div class="fb-ad-image-text">Your words never<br>leave your device.</div>
+                        </div>
+                        <div class="fb-ad-body">
+                            <div class="fb-ad-headline">Your voice stays yours.</div>
+                            <div class="fb-ad-text">Capsule transcribes on your device. No upload, no cloud, no bot in your call. Built for journalists who protect their sources.</div>
+                            <a href="#" class="fb-ad-cta">Download free</a>
+                            <div class="fb-ad-charcount">Headline: 22 chars / Body: 125 chars</div>
+                        </div>
+                    </div>
+
+                    <!-- FB Ad 2 -->
+                    <div class="fb-ad">
+                        <div class="fb-ad-image">
+                            <div class="fb-ad-image-text">&euro;0.006/min.<br>That's the real cost.</div>
+                        </div>
+                        <div class="fb-ad-body">
+                            <div class="fb-ad-headline">See the actual price.</div>
+                            <div class="fb-ad-text">AI transcription costs &euro;0.006/min. Most tools charge 10x that. Capsule charges cost+10%. Free local mode, honest cloud pricing.</div>
+                            <a href="#" class="fb-ad-cta">Learn more</a>
+                            <div class="fb-ad-charcount">Headline: 21 chars / Body: 125 chars</div>
+                        </div>
+                    </div>
+
+                    <!-- FB Ad 3 -->
+                    <div class="fb-ad">
+                        <div class="fb-ad-image">
+                            <div class="fb-ad-image-text">No bot joins<br>your call.</div>
+                        </div>
+                        <div class="fb-ad-body">
+                            <div class="fb-ad-headline">No bot joins your call.</div>
+                            <div class="fb-ad-text">Capsule records directly from your device. No meeting participant added. No notification sent. Invisible, local, private.</div>
+                            <a href="#" class="fb-ad-cta">Try Capsule</a>
+                            <div class="fb-ad-charcount">Headline: 22 chars / Body: 120 chars</div>
+                        </div>
+                    </div>
+
+                    <!-- FB Ad 4 -->
+                    <div class="fb-ad">
+                        <div class="fb-ad-image">
+                            <div class="fb-ad-image-text">0 bytes uploaded.</div>
+                        </div>
+                        <div class="fb-ad-body">
+                            <div class="fb-ad-headline">0 bytes uploaded.</div>
+                            <div class="fb-ad-text">Other tools send your audio to the cloud. Capsule processes it on your Mac. Free on-device transcription. Yours to keep.</div>
+                            <a href="#" class="fb-ad-cta">Download free</a>
+                            <div class="fb-ad-charcount">Headline: 17 chars / Body: 120 chars</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Instagram Stories -->
+            <div>
+                <div class="ads-format-label">Instagram Stories (1080 x 1920)</div>
+                <div class="ig-stories-grid">
+
+                    <div class="ig-story">
+                        <div class="ig-story-primary">Your audio never<br>leaves your device.</div>
+                        <div class="ig-story-secondary">Capsule — private transcription</div>
+                        <a href="#" class="ig-story-cta">Download free</a>
+                    </div>
+
+                    <div class="ig-story">
+                        <div class="ig-story-primary">No bot.<br>No cloud.<br>No upload.</div>
+                        <div class="ig-story-secondary">On-device transcription for people who care.</div>
+                        <a href="#" class="ig-story-cta">Try Capsule</a>
+                    </div>
+
+                    <div class="ig-story">
+                        <div class="ig-story-primary" style="color: var(--accent-blue);">&euro;0.006/min.<br>That's the real cost.</div>
+                        <div class="ig-story-secondary">Capsule charges cost+10%.<br>Everyone else? 700&ndash;1,500% markup.</div>
+                        <a href="#" class="ig-story-cta">See the math</a>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Google Search Ads -->
+            <div>
+                <div class="ads-format-label">Google Search Ads (Text Only)</div>
+                <div class="google-ads-grid">
+
+                    <!-- Google Ad 1 -->
+                    <div class="google-ad">
+                        <div class="google-ad-label">capsule.app</div>
+                        <div class="google-ad-headline">On-Device Transcription, Free | Audio Stays on Your Machine</div>
+                        <div class="google-ad-desc">Capsule transcribes locally. No cloud, no bots, no upload. Free forever on your device.</div>
+                        <div class="google-ad-charcount">H1: 29 chars / H2: 27 chars / Desc: 87 chars</div>
+                    </div>
+
+                    <!-- Google Ad 2 -->
+                    <div class="google-ad">
+                        <div class="google-ad-label">capsule.app</div>
+                        <div class="google-ad-headline">Transcription at Actual Cost | See What AI Really Costs</div>
+                        <div class="google-ad-desc">Most tools mark up AI transcription 700&ndash;1,500%. Capsule charges cost+10%. Try free local.</div>
+                        <div class="google-ad-charcount">H1: 28 chars / H2: 24 chars / Desc: 88 chars</div>
+                    </div>
+
+                    <!-- Google Ad 3 -->
+                    <div class="google-ad">
+                        <div class="google-ad-label">capsule.app</div>
+                        <div class="google-ad-headline">No Bot Joins Your Meeting | Invisible Local Recording</div>
+                        <div class="google-ad-desc">Capsule captures audio from your device. No meeting participant added. Free local mode.</div>
+                        <div class="google-ad-charcount">H1: 25 chars / H2: 25 chars / Desc: 87 chars</div>
+                    </div>
+
+                    <!-- Google Ad 4 -->
+                    <div class="google-ad">
+                        <div class="google-ad-label">capsule.app</div>
+                        <div class="google-ad-headline">For Journalists &amp; Researchers | Private Audio Transcription</div>
+                        <div class="google-ad-desc">Protect your sources. Capsule transcribes on-device. Your audio never touches a server.</div>
+                        <div class="google-ad-charcount">H1: 29 chars / H2: 27 chars / Desc: 87 chars</div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ============================================
+         SECTION 6: SOCIAL HEADERS & BIOS
+         ============================================ -->
+    <section id="social" class="section">
+        <div class="section-label">Section 6</div>
+        <div class="section-title">Social Headers &amp; Bios</div>
+        <div class="section-subtitle">Twitter/X profile mockup with 5 bio options (160 char max) and OG share card variants.</div>
+
+        <div class="social-grid">
+
+            <!-- Twitter Profile -->
+            <div>
+                <div class="twitter-profile">
+                    <div class="twitter-banner"></div>
+                    <div class="twitter-profile-body">
+                        <div class="twitter-avatar"></div>
+                        <div class="twitter-name">Capsule</div>
+                        <div class="twitter-handle">@capsuleapp</div>
+
+                        <div class="bio-option-label">Bio Option 1</div>
+                        <div class="twitter-bio">Transcription that never leaves your device. Free local processing. Cloud credits at cost+10%. No bots. No cloud. No compromise.</div>
+                        <div class="twitter-bio-charcount">128 chars</div>
+
+                        <div class="bio-option-label">Bio Option 2</div>
+                        <div class="twitter-bio">Your audio stays on your machine. On-device transcription for journalists, researchers, and anyone who protects their conversations.</div>
+                        <div class="twitter-bio-charcount">132 chars</div>
+
+                        <div class="bio-option-label">Bio Option 3</div>
+                        <div class="twitter-bio">The transcription app that never sees your audio. Free on-device. Cloud at cost+10%. Built for people with something to protect.</div>
+                        <div class="twitter-bio-charcount">127 chars</div>
+
+                        <div class="bio-option-label">Bio Option 4</div>
+                        <div class="twitter-bio">On-device transcription. No upload. No bot in your call. No cloud required. Free forever locally. capsule.app</div>
+                        <div class="twitter-bio-charcount">109 chars</div>
+
+                        <div class="bio-option-label">Bio Option 5</div>
+                        <div class="twitter-bio">We charge cost+10% for cloud transcription. Everyone else charges 700&ndash;1,500% markup. Or just use free local mode. Your call.</div>
+                        <div class="twitter-bio-charcount">122 chars</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OG Share Cards -->
+            <div style="display: flex; flex-direction: column; gap: 24px;">
+
+                <div class="og-card">
+                    <div class="og-card-image">
+                        <div class="og-card-image-text">Your words never leave your device.</div>
+                    </div>
+                    <div class="og-card-body">
+                        <div class="og-card-url">capsule.app</div>
+                        <div class="og-card-title">Capsule — Your words never leave your device</div>
+                        <div class="og-card-desc">On-device transcription that processes everything locally. No cloud, no bots, no upload. Free forever. Cloud credits at the actual cost of AI.</div>
+                    </div>
+                </div>
+
+                <div class="og-card">
+                    <div class="og-card-image">
+                        <div class="og-card-image-text">Private transcription. Honest pricing.</div>
+                    </div>
+                    <div class="og-card-body">
+                        <div class="og-card-url">capsule.app</div>
+                        <div class="og-card-title">Capsule — Private transcription, honest pricing</div>
+                        <div class="og-card-desc">Transcription that runs on your machine. Free local mode. Cloud credits at cost+10% — because you deserve to see the receipt.</div>
+                    </div>
+                </div>
+
+                <div class="og-card">
+                    <div class="og-card-image">
+                        <div class="og-card-image-text">The transcription app that never sees your audio.</div>
+                    </div>
+                    <div class="og-card-body">
+                        <div class="og-card-url">capsule.app</div>
+                        <div class="og-card-title">Capsule — The transcription app that never sees your audio</div>
+                        <div class="og-card-desc">On-device AI transcription for journalists, researchers, and privacy-conscious professionals. Free locally. Cloud at cost+10%.</div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ============================================
+         SECTION 7: VIDEO AD TEXT OVERLAYS
+         ============================================ -->
+    <section id="video" class="section">
+        <div class="section-label">Section 7</div>
+        <div class="section-title">Video Ad Text Overlays</div>
+        <div class="section-subtitle">Storyboard frames for the 15-second "The Receipt" concept. Dark backgrounds, text-driven, no actors. Full scripts for 15s, 30s, 60s in VIDEO-SCRIPTS.md.</div>
+
+        <!-- 15s Storyboard -->
+        <div class="video-storyboard">
+            <div class="video-concept-title">15s — "The Receipt"</div>
+            <div class="video-concept-subtitle">Cost transparency reveal. Numbers on dark glass, building to Capsule's honest price.</div>
+
+            <div class="frames-grid">
+
+                <div class="frame">
+                    <div class="frame-viewport">
+                        <div class="frame-text">AI transcription costs<br><span class="accent">&euro;0.006/min.</span></div>
+                    </div>
+                    <div class="frame-meta">
+                        <span class="frame-time">0–3s</span>
+                        <span class="frame-note">Fade in, silence</span>
+                    </div>
+                </div>
+
+                <div class="frame">
+                    <div class="frame-viewport">
+                        <div class="frame-text">Most tools charge<br><span class="accent">&euro;0.05 – &euro;0.10.</span></div>
+                    </div>
+                    <div class="frame-meta">
+                        <span class="frame-time">3–7s</span>
+                        <span class="frame-note">Second line appears below</span>
+                    </div>
+                </div>
+
+                <div class="frame">
+                    <div class="frame-viewport">
+                        <div class="frame-text" style="font-size: 20px;">That's a<br><span class="accent" style="font-size: 28px;">700–1,500% markup.</span></div>
+                    </div>
+                    <div class="frame-meta">
+                        <span class="frame-time">7–11s</span>
+                        <span class="frame-note">Percentage scales larger</span>
+                    </div>
+                </div>
+
+                <div class="frame">
+                    <div class="frame-viewport">
+                        <div class="frame-text"><span class="accent" style="font-size: 22px;">Capsule charges &euro;0.0066.</span></div>
+                    </div>
+                    <div class="frame-meta">
+                        <span class="frame-time">11–13s</span>
+                        <span class="frame-note">Clean reset, center screen</span>
+                    </div>
+                </div>
+
+                <div class="frame">
+                    <div class="frame-viewport">
+                        <div class="frame-text">Cost + 10%.<br>Here's the receipt.<br><br><span style="font-size: 12px; color: var(--text-tertiary);">capsule.app</span></div>
+                    </div>
+                    <div class="frame-meta">
+                        <span class="frame-time">13–15s</span>
+                        <span class="frame-note">Logo + URL fade in</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 30s overview frames -->
+        <div class="video-storyboard">
+            <div class="video-concept-title">30s — "What Leaves Your Device"</div>
+            <div class="video-concept-subtitle">Privacy architecture story. A thin line represents data leaving — then disappears for Capsule.</div>
+
+            <div class="frames-grid">
+
+                <div class="frame">
+                    <div class="frame-viewport">
+                        <div class="frame-text">When you use a<br>transcription tool,</div>
+                    </div>
+                    <div class="frame-meta">
+                        <span class="frame-time">0–4s</span>
+                        <span class="frame-note">Text fade-in, left-aligned</span>
+                    </div>
+                </div>
+
+                <div class="frame">
+                    <div class="frame-viewport" style="position: relative;">
+                        <div class="frame-text">your audio travels<br>to a server.</div>
+                        <div style="position: absolute; bottom: 30%; left: 0; width: 80%; height: 1px; background: linear-gradient(90deg, rgba(255,255,255,0.5), transparent);"></div>
+                    </div>
+                    <div class="frame-meta">
+                        <span class="frame-time">4–8s</span>
+                        <span class="frame-note">Line animates L to R</span>
+                    </div>
+                </div>
+
+                <div class="frame">
+                    <div class="frame-viewport">
+                        <div class="frame-text" style="color: var(--text-secondary);">Someone else's server.</div>
+                    </div>
+                    <div class="frame-meta">
+                        <span class="frame-time">8–11s</span>
+                        <span class="frame-note">Line pulses at edge</span>
+                    </div>
+                </div>
+
+                <div class="frame">
+                    <div class="frame-viewport">
+                        <div class="frame-text"><span class="accent">With Capsule,<br>nothing leaves.</span></div>
+                    </div>
+                    <div class="frame-meta">
+                        <span class="frame-time">11–14s</span>
+                        <span class="frame-note">Hard cut. Line gone.</span>
+                    </div>
+                </div>
+
+                <div class="frame">
+                    <div class="frame-viewport" style="background: #0d0d0d;">
+                        <div class="frame-text" style="font-size: 11px; color: var(--text-tertiary);">[Screen recording:<br>Capsule app transcribing]</div>
+                    </div>
+                    <div class="frame-meta">
+                        <span class="frame-time">14–22s</span>
+                        <span class="frame-note">App demo, live transcription</span>
+                    </div>
+                </div>
+
+                <div class="frame">
+                    <div class="frame-viewport">
+                        <div class="frame-text" style="font-size: 13px;">No upload.<br>No bot.<br>No cloud required.</div>
+                    </div>
+                    <div class="frame-meta">
+                        <span class="frame-time">22–26s</span>
+                        <span class="frame-note">Three lines, sequential</span>
+                    </div>
+                </div>
+
+                <div class="frame">
+                    <div class="frame-viewport">
+                        <div class="frame-text"><span class="accent">Capsule.</span><br>Private transcription.<br><br><span style="font-size: 11px; color: var(--text-tertiary);">capsule.app</span></div>
+                    </div>
+                    <div class="frame-meta">
+                        <span class="frame-time">26–30s</span>
+                        <span class="frame-note">End card + URL</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="footer-text">Capsule Copy System — WP-08 Quiet Thunder — Generated 2026-03-18 — All copy derived from competitive whitespace analysis of 589 elements across 36 brands</p>
+    </footer>
+
+</body>
+</html>
