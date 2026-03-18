@@ -1,0 +1,26 @@
+{
+  "brand": "Mullvad VPN",
+  "url": "https://mullvad.net/pricing",
+  "fetched_at": "2026-03-18T15:52:54.320535+00:00",
+  "extraction_failed": false,
+  "elements": {
+    "headline": "A fair pricing model",
+    "plans": [
+      {
+        "name": "1 month",
+        "description": "€5 per month",
+        "cta": "Get started – generate an account"
+      },
+      {
+        "name": "1 year",
+        "description": "€5 per month",
+        "cta": "Get started – generate an account"
+      },
+      {
+        "name": "1 decade",
+        "description": "€5 per month",
+        "cta": "Get started – generate an account"
+      }
+    ]
+  }
+}

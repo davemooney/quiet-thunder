@@ -1,0 +1,37 @@
+{
+  "brand": "Anthropic",
+  "tier": "adjacent",
+  "url": "https://anthropic.com",
+  "fetched_at": "2026-03-18T15:50:01.785893+00:00",
+  "extraction_failed": false,
+  "js_heavy": false,
+  "elements": {
+    "title": "Home \\ Anthropic",
+    "meta_description": null,
+    "og_description": null,
+    "h1": "AI research and products that put safety at the frontier",
+    "hero_subheadline": "AI will have a vast impact on the world. Anthropic is a public benefit corporation dedicated to securing its benefits and mitigating its risks.",
+    "h2s": [
+      "Four Hundred Meters on Mars",
+      "Latest releases",
+      "Where things stand with the Department of War",
+      "Claude Sonnet 4.6",
+      "Claude is a space to think",
+      "At Anthropic, we build AI to serve humanity's long-term well-being.",
+      "Footer"
+    ],
+    "ctas": [
+      "Read the story",
+      "Read More",
+      "Read the post",
+      "Read announcement",
+      "Model details",
+      "Try Claude",
+      "Log in to Claude",
+      "Download app",
+      "Contact sales",
+      "Cookie Settings"
+    ],
+    "footer_tagline": "© 2025 Anthropic PBC"
+  }
+}

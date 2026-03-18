@@ -1,0 +1,26 @@
+{
+  "brand": "Anthropic",
+  "url": "https://claude.com/pricing",
+  "fetched_at": "2026-03-18T15:52:54.320535+00:00",
+  "extraction_failed": false,
+  "elements": {
+    "headline": "Pricing",
+    "plans": [
+      {
+        "name": "Team",
+        "description": "Predictable costs with essential features for team collaboration",
+        "cta": "Get Team plan"
+      },
+      {
+        "name": "Enterprise (self-serve)",
+        "description": "Enterprise security without waiting—start today without sales contact",
+        "cta": "Get Enterprise plan"
+      },
+      {
+        "name": "Enterprise (sales-assisted)",
+        "description": "Tailored terms, MSA, custom contracts, and dedicated support",
+        "cta": "Contact sales"
+      }
+    ]
+  }
+}

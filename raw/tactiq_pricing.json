@@ -1,0 +1,36 @@
+{
+  "brand": "Tactiq",
+  "url": "https://tactiq.io/pricing",
+  "fetched_at": "2026-03-18T15:52:54.320535+00:00",
+  "extraction_failed": false,
+  "elements": {
+    "headline": "Make every meeting deliver results and outcomes",
+    "plans": [
+      {
+        "name": "Free",
+        "description": "For 1 user",
+        "cta": "Start for free"
+      },
+      {
+        "name": "Pro",
+        "description": "For 1 pro",
+        "cta": "Buy Pro"
+      },
+      {
+        "name": "Team",
+        "description": "For 1 - 20 users",
+        "cta": "Buy Team"
+      },
+      {
+        "name": "Business",
+        "description": "For 20 - 200 users",
+        "cta": "Order Seats"
+      },
+      {
+        "name": "Enterprise",
+        "description": "For 200+ users",
+        "cta": "Contact Sales"
+      }
+    ]
+  }
+}

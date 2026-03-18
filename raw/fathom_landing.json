@@ -1,0 +1,45 @@
+{
+  "brand": "Fathom",
+  "tier": "direct",
+  "url": "https://fathom.ai/",
+  "fetched_at": "2026-03-18T15:50:01.785893+00:00",
+  "extraction_failed": false,
+  "js_heavy": false,
+  "elements": {
+    "title": "Fathom AI Notetaker - Never Take Notes Again",
+    "meta_description": null,
+    "og_description": null,
+    "h1": "AI notetaking that is out of this world",
+    "hero_subheadline": "Fathom summarizes your meetings so you can focus on the conversation.",
+    "h2s": [
+      "Move work forward faster",
+      "Whether you're a team of 1 or 1,000, Fathom's got your back",
+      "Shared visibility. Smarter execution.",
+      "Fully present. Always prepared.",
+      "Fathom teams work smarter",
+      "Make your team unstoppable",
+      "Zero friction, maximum flexibility.",
+      "Works where you meet",
+      "Fathom adapts to your workflow, not the other way around.",
+      "Every team in flow",
+      "Clarity",
+      "Momentum",
+      "Ease",
+      "Stop guessing. Ask Fathom. Start today, for free."
+    ],
+    "ctas": [
+      "Get Started - FREE FOREVER",
+      "SWITCH TO FATHOM",
+      "See our pricing",
+      "Book a Demo",
+      "Log In",
+      "Sign Up",
+      "SIGN UP FREE",
+      "Get Started. It's Free.",
+      "GET THE TOOLS TO LEVEL UP",
+      "HOW IT WORKS",
+      "Learn more"
+    ],
+    "footer_tagline": "Fathom © All Rights Reserved"
+  }
+}

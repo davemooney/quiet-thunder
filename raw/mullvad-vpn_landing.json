@@ -1,0 +1,39 @@
+{
+  "brand": "Mullvad VPN",
+  "tier": "privacy",
+  "url": "https://mullvad.net",
+  "fetched_at": "2026-03-18T15:50:01.785893+00:00",
+  "extraction_failed": false,
+  "js_heavy": true,
+  "elements": {
+    "title": "Mullvad VPN - Privacy is for the people",
+    "meta_description": null,
+    "og_description": null,
+    "h1": "Privacy is for the people",
+    "hero_subheadline": "A free and open society is built upon privacy. If people don't have the right to decide for themselves exactly when and with whom they want to share their thoughts and ideas, then all other rights are at risk.",
+    "h2s": [
+      "And then? And then Mullvad was censored in the UK.",
+      "Free the internet from mass surveillance and censorship",
+      "Mullvad VPN",
+      "€5/month",
+      "Fight data collection with Mullvad Browser",
+      "Understanding VPN & online privacy",
+      "What is a VPN and how does it protect against mass surveillance?",
+      "All together as one: This is how the Mullvad Browser works",
+      "How to bypass firewalls and censorship",
+      "You the people have the power. Free the internet."
+    ],
+    "ctas": [
+      "Watch all the banned ads here",
+      "Mullvad VPN",
+      "Mullvad Browser",
+      "Why privacy matters",
+      "Get started",
+      "Get Mullvad Browser",
+      "Read article",
+      "Read article",
+      "Read article"
+    ],
+    "footer_tagline": null
+  }
+}

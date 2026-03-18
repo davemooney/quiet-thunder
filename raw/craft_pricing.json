@@ -1,0 +1,31 @@
+{
+  "brand": "Craft",
+  "url": "https://craft.do/pricing",
+  "fetched_at": "2026-03-18T15:52:54.320535+00:00",
+  "extraction_failed": false,
+  "elements": {
+    "headline": "Choose The Plan That's Right For You",
+    "plans": [
+      {
+        "name": "Free",
+        "description": "Start exploring. A complete experience for occasional use.",
+        "cta": "Sign up"
+      },
+      {
+        "name": "Plus",
+        "description": "For your daily workflow. Remove all limits and make Craft your everyday creative home.",
+        "cta": "Get Started"
+      },
+      {
+        "name": "Family",
+        "description": "Fixed-price bundle of 2 to 6 Plus accounts in a single subscription. Collaborate in a shared Space.",
+        "cta": "Get Started"
+      },
+      {
+        "name": "Team",
+        "description": "Fixed-price with up to 10 Plus accounts in a single subscription. Collaborate in a shared Space.",
+        "cta": "Get Started"
+      }
+    ]
+  }
+}

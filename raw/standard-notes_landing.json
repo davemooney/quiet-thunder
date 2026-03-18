@@ -1,0 +1,34 @@
+{
+  "brand": "Standard Notes",
+  "tier": "privacy",
+  "url": "https://standardnotes.com",
+  "fetched_at": "2026-03-18T15:50:01.785893+00:00",
+  "extraction_failed": false,
+  "js_heavy": true,
+  "elements": {
+    "title": "Standard Notes | End-To-End Encrypted Notes App",
+    "meta_description": null,
+    "og_description": null,
+    "h1": "Free your mind.",
+    "hero_subheadline": "Standard Notes is a free, secure note-taking app with powerful end-to-end encryption, unparalleled privacy features, and seamless cross-platform syncing on unlimited devices.",
+    "h2s": [
+      "A steel vault for your mind.",
+      "Write fearlessly.",
+      "Your notes and files, always.",
+      "Take back your data.",
+      "Download Standard Notes",
+      "Who is Standard Notes?"
+    ],
+    "ctas": [
+      "Download for free",
+      "Try live demo",
+      "Explore our features",
+      "Read how we protect your data",
+      "View our plans",
+      "Read our security audits",
+      "Learn about our plans",
+      "Go to web app"
+    ],
+    "footer_tagline": null
+  }
+}

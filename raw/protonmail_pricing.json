@@ -1,0 +1,26 @@
+{
+  "brand": "ProtonMail",
+  "url": "https://proton.me/pricing",
+  "fetched_at": "2026-03-18T15:52:54.320535+00:00",
+  "extraction_failed": false,
+  "elements": {
+    "headline": "Our plans for your privacy",
+    "plans": [
+      {
+        "name": "Free",
+        "description": "Start with essential privacy features across Mail, Calendar, Drive, and VPN",
+        "cta": "Create free account"
+      },
+      {
+        "name": "Mail Plus",
+        "description": "Enhanced email with 15GB storage, custom domains, and advanced features",
+        "cta": "Get Mail Plus"
+      },
+      {
+        "name": "Proton Unlimited",
+        "description": "Complete privacy suite with 500GB storage across all services",
+        "cta": "Get Unlimited"
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "brand": "Tactiq",
+  "tier": "direct",
+  "url": "https://tactiq.io",
+  "fetched_at": "2026-03-18T15:50:01.785893+00:00",
+  "extraction_failed": false,
+  "js_heavy": false,
+  "elements": {
+    "title": "Tactiq.io - AI Meeting Transcripts for Google Meet, Zoom & Teams",
+    "meta_description": null,
+    "og_description": null,
+    "h1": "Focus on the meeting, let AI handle the notes.",
+    "hero_subheadline": "Get live, in-meeting transcriptions and insightful AI summaries - ensuring you always take the right actions and get more out of your meetings.",
+    "h2s": [
+      "Hola!",
+      "Your meetings already have everything your team needs to execute perfectly.",
+      "Every meeting delivers outcomes.",
+      "Helping 10,000+ of the world's most modern companies communicate better.",
+      "Helping 10,000+ companies",
+      "Get live transcriptions without an AI bot joining the meeting.",
+      "Summarize meetings as they take place.",
+      "Get actionable AI insights from your transcripts in one click.",
+      "Build meeting workflow automations to share context instantly.",
+      "Enterprise customer story",
+      "Learn how Tactiq helped Tyfone 10x their meeting productivity.",
+      "What our users say",
+      "Enterprise-grade security and privacy.",
+      "FAQ",
+      "Your questions, answered.",
+      "Turn your meetings into action."
+    ],
+    "ctas": [
+      "Add to Chrome - It's free!",
+      "Add to Chrome",
+      "Download",
+      "Log in",
+      "Chat with us",
+      "Chatea con nosotros",
+      "Fale com a gente",
+      "チャットで相談する",
+      "Partner with us",
+      "Read the full story",
+      "View our Trust Center",
+      "Get in touch",
+      "Learn more",
+      "Read more in our Privacy Center",
+      "Read Open AI API Policy",
+      "Book a demo"
+    ],
+    "footer_tagline": "The easiest way to transcribe, summarize, extract, and share meeting insights."
+  }
+}

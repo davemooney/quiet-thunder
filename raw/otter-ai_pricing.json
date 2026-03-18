@@ -1,0 +1,31 @@
+{
+  "brand": "Otter.ai",
+  "url": "https://otter.ai/pricing",
+  "fetched_at": "2026-03-18T15:52:54.320535+00:00",
+  "extraction_failed": false,
+  "elements": {
+    "headline": "Choose the plan that's right for you",
+    "plans": [
+      {
+        "name": "Basic",
+        "description": "For those who want to give it a try",
+        "cta": "Get started"
+      },
+      {
+        "name": "Pro",
+        "description": "For individuals and small teams",
+        "cta": "Buy now"
+      },
+      {
+        "name": "Business",
+        "description": "For medium-sized teams",
+        "cta": "Buy now"
+      },
+      {
+        "name": "Enterprise",
+        "description": "For large teams and companies",
+        "cta": "Schedule a demo"
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "brand": "Notta",
+  "tier": "direct",
+  "url": "https://notta.ai",
+  "fetched_at": "2026-03-18T15:50:01.785893+00:00",
+  "extraction_failed": false,
+  "js_heavy": true,
+  "elements": {
+    "title": null,
+    "meta_description": null,
+    "og_description": null,
+    "h1": null,
+    "hero_subheadline": null,
+    "h2s": [],
+    "ctas": [],
+    "footer_tagline": null
+  }
+}

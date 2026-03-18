@@ -1,0 +1,31 @@
+{
+  "brand": "Linear",
+  "url": "https://linear.app/pricing",
+  "fetched_at": "2026-03-18T15:52:54.320535+00:00",
+  "extraction_failed": false,
+  "elements": {
+    "headline": "Pricing",
+    "plans": [
+      {
+        "name": "Free",
+        "description": "Free for everyone",
+        "cta": "Get started"
+      },
+      {
+        "name": "Basic",
+        "description": "Billed yearly",
+        "cta": "Get started"
+      },
+      {
+        "name": "Business",
+        "description": "Billed yearly",
+        "cta": "Get started"
+      },
+      {
+        "name": "Enterprise",
+        "description": "Annual billing only",
+        "cta": "Contact sales"
+      }
+    ]
+  }
+}

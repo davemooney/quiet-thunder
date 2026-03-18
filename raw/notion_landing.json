@@ -1,0 +1,42 @@
+{
+  "brand": "Notion",
+  "tier": "adjacent",
+  "url": "https://www.notion.com/",
+  "fetched_at": "2026-03-18T15:50:01.785893+00:00",
+  "extraction_failed": false,
+  "js_heavy": true,
+  "elements": {
+    "title": "The AI workspace that works for you. | Notion",
+    "meta_description": "Build Custom Agents, search across all your apps, and automate busywork. The AI workspace where teams get more done, faster.",
+    "og_description": null,
+    "h1": "One workspace. Zero busywork.",
+    "hero_subheadline": "Notion is where your teams and AI agents capture knowledge, find answers, and automate projects. Now a team of 7 feels like 70.",
+    "h2s": [
+      "Introducing Notion 3.0",
+      "Notion Agent",
+      "Custom Agents",
+      "Enterprise Search",
+      "AI Meeting Notes",
+      "Flexible workflows",
+      "More productivity. Fewer tools.",
+      "Trusted by teams that ship.",
+      "Let Notion AI handle the busywork."
+    ],
+    "ctas": [
+      "Get Notion free",
+      "Request a demo",
+      "See what's new→",
+      "Download the Notion App→",
+      "Try Notion Agents",
+      "Learn more",
+      "Try it",
+      "See pricing plans",
+      "Read the full story",
+      "Download for Mac",
+      "Download",
+      "Log in",
+      "Explore more→"
+    ],
+    "footer_tagline": null
+  }
+}

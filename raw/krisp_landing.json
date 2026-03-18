@@ -1,0 +1,51 @@
+{
+  "brand": "Krisp",
+  "tier": "direct",
+  "url": "https://krisp.ai",
+  "fetched_at": "2026-03-18T15:50:01.785893+00:00",
+  "extraction_failed": false,
+  "js_heavy": false,
+  "elements": {
+    "title": "Voice AI for Meetings: Noise Cancellation & AI Note Taker | Krisp",
+    "meta_description": "Krisp is a Voice AI platform that makes meetings clearer and more productive with noise cancellation, accent conversion, and AI note-taking.",
+    "og_description": "Krisp is a Voice AI platform that makes meetings clearer...",
+    "h1": "Voice AI for meetings",
+    "hero_subheadline": "For teams, call centers, and developers — #1 noise cancellation, accent AI, translation, and AI note taker.",
+    "h2s": [
+      "In-meeting superpowers.",
+      "Automate post-meeting everything.",
+      "Prepare before the meeting.",
+      "Flexibility to fit your workflow",
+      "Store. Organize. Act On.",
+      "Your data, always kept private and secure.",
+      "Works with any calling app & integrates to your workflow",
+      "Install Mobile app",
+      "Capture & customize meetings your way.",
+      "Trusted by professionals - see our G2 reviews",
+      "Have questions? We've got answers.",
+      "AI for automation, while keeping things human",
+      "Your AI teammate for smarter meetings"
+    ],
+    "ctas": [
+      "Get Krisp",
+      "AI Meeting Assistant",
+      "Call Center AI",
+      "AI Voice SDK",
+      "Sign in",
+      "Book a demo",
+      "Get Krisp for free",
+      "Learn more about Transcription & Recording",
+      "Learn more about Noise Cancellation",
+      "Learn more about Accent Conversion",
+      "Learn more about AI Meeting Notes",
+      "Learn more about Sync to CRM",
+      "Visit Trust center",
+      "Get extension",
+      "Read Krisp reviews on G2",
+      "Get Krisp for free",
+      "Schedule a meeting",
+      "Start a 14-day trial"
+    ],
+    "footer_tagline": "© 2026 Krisp Technologies, Inc. All rights reserved."
+  }
+}

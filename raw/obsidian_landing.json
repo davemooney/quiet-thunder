@@ -1,0 +1,39 @@
+{
+  "brand": "Obsidian",
+  "tier": "adjacent",
+  "url": "https://obsidian.md",
+  "fetched_at": "2026-03-18T15:50:01.785893+00:00",
+  "extraction_failed": false,
+  "js_heavy": false,
+  "elements": {
+    "title": "Obsidian - Sharpen your thinking",
+    "meta_description": null,
+    "og_description": null,
+    "h1": "Sharpen your thinking.",
+    "hero_subheadline": "The free and flexible app for your private thoughts.",
+    "h2s": [
+      "Writing is telepathy",
+      "Spark ideas.",
+      "Sync securely.",
+      "Publish instantly.",
+      "It's your time to shine."
+    ],
+    "ctas": [
+      "Get Obsidian for Windows",
+      "More platforms",
+      "Download now",
+      "Learn more",
+      "Learn more",
+      "Learn more",
+      "Get Obsidian",
+      "Join us on Discord",
+      "Discussion forum",
+      "Developer docs",
+      "Download",
+      "Pricing",
+      "Enterprise",
+      "Account"
+    ],
+    "footer_tagline": "© 2026 Obsidian"
+  }
+}

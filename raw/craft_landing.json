@@ -1,0 +1,38 @@
+{
+  "brand": "Craft",
+  "tier": "adjacent",
+  "url": "https://craft.do",
+  "fetched_at": "2026-03-18T15:50:01.785893+00:00",
+  "extraction_failed": false,
+  "js_heavy": true,
+  "elements": {
+    "title": "Craft — Docs and Notes Editor",
+    "meta_description": "When your tools feel right, everything else flows naturally.",
+    "og_description": "When your tools feel right, everything else flows naturally.",
+    "h1": "Your space for notes, tasks, and big ideas",
+    "hero_subheadline": "Craft isn't just for one thing, it's for your things.",
+    "h2s": [
+      "Craft isn't just for one thing, it's for your things.",
+      "How people use Craft",
+      "From first thought to final form",
+      "Imagine the possibilities when everything's connected to Craft",
+      "Planning that doesn't feel like work",
+      "Structure That Adapts to Your Thinking",
+      "Make it unmistakably yours",
+      "Stay in the loop",
+      "Your pace, your plan",
+      "Let's get started"
+    ],
+    "ctas": [
+      "Try Craft Free",
+      "Learn more",
+      "Continue on web",
+      "Download on the App Store",
+      "Upgrade to Plus",
+      "Let us know",
+      "Get Started",
+      "Download on the App Store"
+    ],
+    "footer_tagline": "© 2026 Craft Docs Limited, Inc. All rights reserved."
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "brand": "Raycast",
+  "url": "https://raycast.com/pricing",
+  "fetched_at": "2026-03-18T15:52:54.320535+00:00",
+  "extraction_failed": false,
+  "elements": {
+    "headline": "Raycast Pricing: Free Forever or Pro with AI for $8/month",
+    "plans": [
+      {
+        "name": "Free",
+        "description": "Core features, including: Clipboard History, Quicklinks, Calculator, Snippets, Window Management + more",
+        "cta": "Download"
+      },
+      {
+        "name": "Pro",
+        "description": "All Free features plus AI, Cloud Sync, Custom Themes, and Advanced AI models",
+        "cta": "Select Plan"
+      },
+      {
+        "name": "Team",
+        "description": "Shared commands, quicklinks, and snippets for team collaboration",
+        "cta": "Select Plan"
+      },
+      {
+        "name": "Team Pro",
+        "description": "Team plan with Pro features including AI and organization controls",
+        "cta": "Select Plan"
+      },
+      {
+        "name": "Enterprise",
+        "description": "Custom solution with advanced admin controls and dedicated support",
+        "cta": "Select Plan"
+      }
+    ]
+  }
+}

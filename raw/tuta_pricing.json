@@ -1,0 +1,26 @@
+{
+  "brand": "Tuta",
+  "url": "https://tuta.com/pricing",
+  "fetched_at": "2026-03-18T15:52:54.320535+00:00",
+  "extraction_failed": false,
+  "elements": {
+    "headline": "Create a secure email account with Tuta Mail",
+    "plans": [
+      {
+        "name": "Free",
+        "description": "Get a taste",
+        "cta": "Get started"
+      },
+      {
+        "name": "Revolutionary",
+        "description": "Most popular",
+        "cta": "Get started"
+      },
+      {
+        "name": "Legend",
+        "description": "All you need",
+        "cta": "Get started"
+      }
+    ]
+  }
+}

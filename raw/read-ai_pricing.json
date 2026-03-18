@@ -1,0 +1,31 @@
+{
+  "brand": "Read.ai",
+  "url": "https://read.ai/pricing",
+  "fetched_at": "2026-03-18T15:52:54.320535+00:00",
+  "extraction_failed": false,
+  "elements": {
+    "headline": "Ready to elevate your productivity?",
+    "plans": [
+      {
+        "name": "Free",
+        "description": "For individuals starting out, with 5 meetings per month complete with summaries, transcription, and search.",
+        "cta": "Get started"
+      },
+      {
+        "name": "Pro",
+        "description": "For individuals and small teams who want basic transcription, search, and premium integrations.",
+        "cta": "Get started"
+      },
+      {
+        "name": "Enterprise",
+        "description": "For individuals and teams who want video playback and other supercharged capabilities.",
+        "cta": "Get started"
+      },
+      {
+        "name": "Enterprise+",
+        "description": "For larger teams and organizations who need security and controls for scale.",
+        "cta": "Get started"
+      }
+    ]
+  }
+}

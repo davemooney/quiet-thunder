@@ -1,0 +1,26 @@
+{
+  "brand": "Granola",
+  "url": "https://www.granola.ai/pricing",
+  "fetched_at": "2026-03-18T15:52:54.320535+00:00",
+  "extraction_failed": false,
+  "elements": {
+    "headline": "Granola how you wanna",
+    "plans": [
+      {
+        "name": "Basic",
+        "description": "Great for a free taste of Granola",
+        "cta": "Sign up"
+      },
+      {
+        "name": "Business",
+        "description": "Great for individuals or small teams",
+        "cta": "Sign up"
+      },
+      {
+        "name": "Enterprise",
+        "description": "Great for larger companies",
+        "cta": "Sign-up in app"
+      }
+    ]
+  }
+}

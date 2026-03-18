@@ -1,0 +1,44 @@
+{
+  "brand": "Supabase",
+  "tier": "adjacent",
+  "url": "https://supabase.com",
+  "fetched_at": "2026-03-18T15:50:01.785893+00:00",
+  "extraction_failed": false,
+  "js_heavy": true,
+  "elements": {
+    "title": "Supabase | The Postgres Development Platform",
+    "meta_description": null,
+    "og_description": null,
+    "h1": "Build in a weekendScale to millions",
+    "hero_subheadline": "Supabase is the Postgres development platform. Start your project with a Postgres database, Authentication, instant APIs, Edge Functions, Realtime subscriptions, Storage, and Vector embeddings.",
+    "h2s": [
+      "Postgres Database",
+      "Authentication",
+      "Edge Functions",
+      "Storage",
+      "Realtime",
+      "Vector",
+      "Data APIs",
+      "Trusted by the world's most innovative companies.",
+      "Start building in seconds",
+      "Stay productive and manage your app without leaving the dashboard",
+      "Join the community",
+      "Open source from day one",
+      "Build in a weekend, scale to millions"
+    ],
+    "ctas": [
+      "Start your project",
+      "Request a demo",
+      "Sign in",
+      "Start your project",
+      "View all stories",
+      "View events",
+      "View all examples",
+      "Official GitHub library",
+      "Join us on Discord",
+      "Request a demo",
+      "Start your project"
+    ],
+    "footer_tagline": "We protect your data."
+  }
+}

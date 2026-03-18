@@ -1,0 +1,36 @@
+{
+  "brand": "Granola",
+  "tier": "direct",
+  "url": "https://www.granola.ai/",
+  "fetched_at": "2026-03-18T15:50:01.785893+00:00",
+  "extraction_failed": false,
+  "js_heavy": true,
+  "elements": {
+    "title": "Granola — The AI notepad that helps you get the doing done",
+    "meta_description": null,
+    "og_description": null,
+    "h1": "The AI notepad for people in back-to-back meetings",
+    "hero_subheadline": "Granola takes your raw meeting notes and makes them awesome",
+    "h2s": [
+      "Granola takes your raw meeting notes and makes them awesome",
+      "Helping the world's best product teams focus more on their meetings",
+      "How it works",
+      "Works on all platforms, no meeting bots",
+      "Get notes in the format your team needs",
+      "Put your meetings to work",
+      "Built for people with back-to-back meetings",
+      "Share your notes with one click"
+    ],
+    "ctas": [
+      "Notepad",
+      "Chat",
+      "Granola for iPhone",
+      "Learn more →",
+      "Pricing",
+      "Blog",
+      "Careers",
+      "Download"
+    ],
+    "footer_tagline": "Made with ♥ in Shoreditch"
+  }
+}

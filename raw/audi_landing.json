@@ -1,0 +1,25 @@
+{
+  "brand": "Audi",
+  "tier": "adjacent",
+  "url": "https://audi.com",
+  "fetched_at": "2026-03-18T15:50:01.785893+00:00",
+  "extraction_failed": false,
+  "js_heavy": true,
+  "elements": {
+    "title": "Audi.com – the international Audi website",
+    "meta_description": null,
+    "og_description": null,
+    "h1": null,
+    "hero_subheadline": null,
+    "h2s": [
+      "Current topics from the world of Audi",
+      "Press releases"
+    ],
+    "ctas": [
+      "To the Audi MediaCenter",
+      "To the press release",
+      "To the press release in the Audi MediaCenter"
+    ],
+    "footer_tagline": null
+  }
+}

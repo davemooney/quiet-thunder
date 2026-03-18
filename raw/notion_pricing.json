@@ -1,0 +1,31 @@
+{
+  "brand": "Notion",
+  "url": "https://www.notion.com/pricing",
+  "fetched_at": "2026-03-18T15:52:54.320535+00:00",
+  "extraction_failed": false,
+  "elements": {
+    "headline": "One tool to run your company.",
+    "plans": [
+      {
+        "name": "Free",
+        "description": "For individuals to organize personal projects and life.",
+        "cta": "Sign up"
+      },
+      {
+        "name": "Plus",
+        "description": "For small teams and professionals to work together.",
+        "cta": "Get started"
+      },
+      {
+        "name": "Business",
+        "description": "For growing businesses to streamline teamwork.",
+        "cta": "Get started"
+      },
+      {
+        "name": "Enterprise",
+        "description": "For organizations to operate with scalability, control, and security.",
+        "cta": "Contact Sales"
+      }
+    ]
+  }
+}

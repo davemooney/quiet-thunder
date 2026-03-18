@@ -1,0 +1,41 @@
+{
+  "brand": "Sonix",
+  "tier": "direct",
+  "url": "https://sonix.ai",
+  "fetched_at": "2026-03-18T15:50:01.785893+00:00",
+  "extraction_failed": false,
+  "js_heavy": false,
+  "elements": {
+    "title": "Automatically convert audio to text | Sonix",
+    "meta_description": null,
+    "og_description": null,
+    "h1": "The World's Most Accurate Transcription Software",
+    "hero_subheadline": "Accuracy is everything. Secure it instantly.",
+    "h2s": [
+      "Most Accurate AI Transcription",
+      "Platform Features",
+      "Loved by Teams",
+      "The World's Most Accurate Transcription Engine",
+      "Powered by AI",
+      "Industry Solutions",
+      "The Smart Switch",
+      "Record Anywhere",
+      "99% accuracy. Every word matters."
+    ],
+    "ctas": [
+      "Start free trial",
+      "Try Sonix for free",
+      "Explore transcription",
+      "Security details",
+      "All languages",
+      "Explore AI",
+      "View all integrations",
+      "Start your free trial",
+      "Compare all plans",
+      "Try Sonix for free",
+      "Visit Help Center",
+      "Sign in"
+    ],
+    "footer_tagline": "Sonix is the world's most accurate AI transcription platform. Fast, accurate, and secure."
+  }
+}

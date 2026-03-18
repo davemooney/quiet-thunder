@@ -1,0 +1,11 @@
+{
+  "brand": "Manus",
+  "url": "https://manus.im/pricing",
+  "fetched_at": "2026-03-18T15:52:54.320535+00:00",
+  "extraction_failed": true,
+  "elements": {
+    "headline": "Manus Pricing Plans",
+    "plans": []
+  },
+  "error": "JS-heavy SPA — pricing plan details not server-rendered"
+}

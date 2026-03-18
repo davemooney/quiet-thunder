@@ -1,0 +1,31 @@
+{
+  "brand": "Krisp",
+  "url": "https://krisp.ai/pricing",
+  "fetched_at": "2026-03-18T15:52:54.320535+00:00",
+  "extraction_failed": false,
+  "elements": {
+    "headline": "Pricing - Meeting AI",
+    "plans": [
+      {
+        "name": "Free Trial",
+        "description": "Explore Krisp on your own.",
+        "cta": "Try it Free"
+      },
+      {
+        "name": "Core",
+        "description": "Best for individuals and small teams",
+        "cta": "Start with Core"
+      },
+      {
+        "name": "Advanced",
+        "description": "For advanced features and controls",
+        "cta": "Start with Advanced"
+      },
+      {
+        "name": "Enterprise",
+        "description": "Best for org-wide rollout & security.",
+        "cta": "Talk to Sales"
+      }
+    ]
+  }
+}

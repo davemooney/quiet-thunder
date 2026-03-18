@@ -1,0 +1,47 @@
+{
+  "brand": "tl;dv",
+  "tier": "direct",
+  "url": "https://tldv.io",
+  "fetched_at": "2026-03-18T15:50:01.785893+00:00",
+  "extraction_failed": false,
+  "js_heavy": false,
+  "elements": {
+    "title": "tl;dv - AI Meeting Notetaker for Zoom, Google Meet & Teams",
+    "meta_description": "AI meeting notes — record, transcribe, and summarize meetings automatically. tl;dv turns Zoom, Google Meet, and Microsoft Teams calls into actionable insights with AI-powered summaries.",
+    "og_description": null,
+    "h1": "AI Meeting Notes are just the beginning",
+    "hero_subheadline": "tl;dv turns every meeting into insights across your entire company.",
+    "h2s": [
+      "Action Items",
+      "tl;dv is trusted by over 2+ million worldwide",
+      "Never take meeting notes again - this AI note taker does it for you",
+      "No more manual updates - this AI notetaker handles CRM and follow-ups too",
+      "Get AI aggregated insights from your company's meetings",
+      "AI Prompt Examples for Teams",
+      "Your data, always kept private and secure",
+      "Use AI to coach your Sales team - so they sell more, and do it faster.",
+      "Ready to check tl;dv's impact on your sales team?sales team?",
+      "Transcribe, translate and summarize your meetings in 30+ languages",
+      "Don't take our word for it. Take Jack's.",
+      "Office life is more than just meetings",
+      "Your note-taking questions, explained"
+    ],
+    "ctas": [
+      "Get tl;dv - Free forever",
+      "More on AI Notes",
+      "More on integrations",
+      "More on AI Reports",
+      "More on Security",
+      "More on Coaching",
+      "Check tl;dv's impact",
+      "More on Recording",
+      "Book a Demo",
+      "Pricing",
+      "tl;dv for Sales",
+      "Integrations",
+      "Security",
+      "Record Google Meet"
+    ],
+    "footer_tagline": null
+  }
+}

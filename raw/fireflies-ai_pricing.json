@@ -1,0 +1,31 @@
+{
+  "brand": "Fireflies.ai",
+  "url": "https://fireflies.ai/pricing",
+  "fetched_at": "2026-03-18T15:52:54.320535+00:00",
+  "extraction_failed": false,
+  "elements": {
+    "headline": "Supercharge Your Meetings",
+    "plans": [
+      {
+        "name": "Free",
+        "description": "For individuals starting out",
+        "cta": "Get Started"
+      },
+      {
+        "name": "Pro",
+        "description": "For professional individuals and small teams",
+        "cta": "Get Started"
+      },
+      {
+        "name": "Business",
+        "description": "For fast growing businesses",
+        "cta": "Get Started"
+      },
+      {
+        "name": "Enterprise",
+        "description": "For large scale enterprises",
+        "cta": "Contact Us"
+      }
+    ]
+  }
+}

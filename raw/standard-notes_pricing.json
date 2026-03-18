@@ -1,0 +1,26 @@
+{
+  "brand": "Standard Notes",
+  "url": "https://standardnotes.com/plans",
+  "fetched_at": "2026-03-18T15:52:54.320535+00:00",
+  "extraction_failed": false,
+  "elements": {
+    "headline": "Pricing",
+    "plans": [
+      {
+        "name": "Standard",
+        "description": "Our way of contributing our privacy-preserving solution to society at large.",
+        "cta": "Start for free"
+      },
+      {
+        "name": "Productivity",
+        "description": "Unlocks the full potential of Standard Notes. Ideal if you're not using files.",
+        "cta": "Go Productivity"
+      },
+      {
+        "name": "Professional",
+        "description": "Offers 100GB of encrypted storage for your photos, documents, and videos.",
+        "cta": "Go Professional"
+      }
+    ]
+  }
+}

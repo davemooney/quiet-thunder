@@ -1,0 +1,40 @@
+{
+  "brand": "Fireflies.ai",
+  "tier": "direct",
+  "url": "https://fireflies.ai",
+  "fetched_at": "2026-03-18T15:50:01.785893+00:00",
+  "extraction_failed": false,
+  "js_heavy": true,
+  "elements": {
+    "title": "Fireflies.ai | The #1 AI Notetaker for Your Meetings",
+    "meta_description": null,
+    "og_description": null,
+    "h1": "The #1 AI Notetaker For Your Meetings",
+    "hero_subheadline": "Transcribe, summarize, search, and analyze all your team conversations.",
+    "h2s": [
+      "High Quality Meeting Transcription & Recording",
+      "Comprehensive AI Summaries",
+      "Capture Meetings Anywhere & Anytime",
+      "Remember Every Conversation with AI Powered Search",
+      "Get real-time suggestions, coaching, and answers during meetings.",
+      "Drive Insights With Conversation Intelligence",
+      "All your Tasks, Contacts, & Knowledge in one place",
+      "Go Beyond Notetaking with 200+ AI Skills",
+      "Meeting Intelligence with Fireflies MCP",
+      "Integrate Fireflies with your favorite Work Tools",
+      "Enterprise-grade Security",
+      "Don't Take Our Word For it"
+    ],
+    "ctas": [
+      "Get Started",
+      "Request demo",
+      "Login",
+      "Explore Live Assist",
+      "Learn More",
+      "Browse",
+      "Try Fireflies For Free",
+      "Request Demo"
+    ],
+    "footer_tagline": null
+  }
+}

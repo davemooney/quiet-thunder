@@ -1,0 +1,42 @@
+{
+  "brand": "Signal",
+  "tier": "privacy",
+  "url": "https://signal.org",
+  "fetched_at": "2026-03-18T15:50:01.785893+00:00",
+  "extraction_failed": false,
+  "js_heavy": false,
+  "elements": {
+    "title": "Signal >> Home",
+    "meta_description": null,
+    "og_description": null,
+    "h1": "Speak Freely",
+    "hero_subheadline": "Say \"hello\" to a different messaging experience. An unexpected focus on privacy, combined with all of the features you expect.",
+    "h2s": [
+      "Why use Signal?",
+      "Share Without Insecurity",
+      "Say Anything",
+      "Speak Freely",
+      "Make Privacy Stick",
+      "Get Together with Groups",
+      "No ads. No trackers. No kidding.",
+      "Free for Everyone"
+    ],
+    "ctas": [
+      "Get Signal",
+      "Help",
+      "Blog",
+      "Developers",
+      "Careers",
+      "Donate",
+      "Donate to Signal",
+      "Android",
+      "iPhone & iPad",
+      "Windows",
+      "Mac",
+      "Linux",
+      "Support Center",
+      "Community"
+    ],
+    "footer_tagline": null
+  }
+}

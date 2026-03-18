@@ -1,0 +1,49 @@
+{
+  "brand": "Otter.ai",
+  "tier": "direct",
+  "url": "https://otter.ai",
+  "fetched_at": "2026-03-18T15:50:01.785893+00:00",
+  "extraction_failed": false,
+  "js_heavy": false,
+  "elements": {
+    "title": "Otter Meeting Agent - AI Notetaker, Transcription, Insights",
+    "meta_description": null,
+    "og_description": null,
+    "h1": "Turn meetings into transcripts",
+    "hero_subheadline": "Otter is the AI Notetaker that builds your knowledge base and powers your workflow with transcription, automated summaries, AI Chat, and more.",
+    "h2s": [
+      "Like having your own executive assistant",
+      "Ask Otter anything",
+      "Just say, \"Hey Otter\"",
+      "See the words, as they're spoken",
+      "Get instant summaries you can trust",
+      "Automate the action items",
+      "Push sales insights to your CRM",
+      "Organize your conversations with Channels",
+      "There's an AI Notetaker for that",
+      "Choose how you capture meetings",
+      "Scale with your company",
+      "Pull meeting knowledge into your favorite AI chat",
+      "Trusted by teams, loved by people",
+      "As Seen in The Wall Street Journal",
+      "Connect to your favorite apps",
+      "Flexible plans for teams, individuals, and enterprises",
+      "The world's smartest AI Notetaker"
+    ],
+    "ctas": [
+      "Start for free",
+      "Download for Mac",
+      "Download for Windows",
+      "Schedule demo",
+      "Demo it live",
+      "Learn more",
+      "View integrations",
+      "View Basic plan details",
+      "View Business plan details",
+      "Contact sales",
+      "Browse related articles",
+      "Log in"
+    ],
+    "footer_tagline": null
+  }
+}

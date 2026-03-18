@@ -1,0 +1,39 @@
+{
+  "brand": "Manus",
+  "tier": "adjacent",
+  "url": "https://manus.im",
+  "fetched_at": "2026-03-18T15:50:01.785893+00:00",
+  "extraction_failed": false,
+  "js_heavy": true,
+  "elements": {
+    "title": "Manus: Hands On AI",
+    "meta_description": "Manus is the action engine that goes beyond answers to execute tasks, automate workflows, and extend your human reach.",
+    "og_description": "Manus is the action engine that goes beyond answers to execute tasks, automate workflows, and extend your human reach.",
+    "h1": "What can I do for you?",
+    "hero_subheadline": "Less structure, more intelligence.",
+    "h2s": [
+      "Product",
+      "Resources",
+      "Community",
+      "Compare",
+      "Download",
+      "Business",
+      "Company"
+    ],
+    "ctas": [
+      "Sign in",
+      "Sign up",
+      "Create slides",
+      "Build website",
+      "Develop apps",
+      "Design",
+      "Features",
+      "Resources",
+      "Events",
+      "Business",
+      "Pricing",
+      "Manus is now part of Meta — bringing AI to businesses worldwide"
+    ],
+    "footer_tagline": null
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "brand": "Obsidian",
+  "url": "https://obsidian.md/pricing",
+  "fetched_at": "2026-03-18T15:52:54.320535+00:00",
+  "extraction_failed": false,
+  "elements": {
+    "headline": "Free without limits.",
+    "plans": [
+      {
+        "name": "Sync",
+        "description": "Sync notes across devices with end-to-end encryption",
+        "cta": "Sign up"
+      },
+      {
+        "name": "Publish",
+        "description": "Publish notes to the web without technical knowledge required",
+        "cta": "Sign up"
+      },
+      {
+        "name": "Catalyst",
+        "description": "Early access to beta versions and community badges",
+        "cta": "Support Obsidian"
+      },
+      {
+        "name": "Commercial",
+        "description": "Support development and become a featured organization",
+        "cta": "Support Obsidian"
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "brand": "Things 3",
+  "tier": "adjacent",
+  "url": "https://culturedcode.com/things/",
+  "fetched_at": "2026-03-18T15:50:01.785893+00:00",
+  "extraction_failed": false,
+  "js_heavy": false,
+  "elements": {
+    "title": "Things - To-Do List App for Mac & iOS",
+    "meta_description": null,
+    "og_description": null,
+    "h1": "Things",
+    "hero_subheadline": "Things is the award-winning personal task manager that helps you plan your day, manage your projects, and make real progress toward your goals.",
+    "h2s": [
+      "Simply Powerful",
+      "Get Things, Get Done",
+      "Mac",
+      "iPhone & Watch",
+      "iPad",
+      "Vision Pro",
+      "What People Are Saying",
+      "Read All About It",
+      "Things Newsletter"
+    ],
+    "ctas": [
+      "Watch Introduction Video",
+      "See features",
+      "Download Free Trial",
+      "Download on the Mac App Store",
+      "Download on the App Store",
+      "Download on the App Store",
+      "Download on the App Store",
+      "Download on the App Store"
+    ],
+    "footer_tagline": null
+  }
+}

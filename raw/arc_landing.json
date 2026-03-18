@@ -1,0 +1,22 @@
+{
+  "brand": "Arc",
+  "tier": "adjacent",
+  "url": "https://arc.net",
+  "fetched_at": "2026-03-18T15:50:01.785893+00:00",
+  "extraction_failed": false,
+  "js_heavy": true,
+  "elements": {
+    "title": "Arc from The Browser Company",
+    "meta_description": null,
+    "og_description": null,
+    "h1": "Arc from The Browser Company",
+    "hero_subheadline": null,
+    "h2s": [],
+    "ctas": [
+      "Download for Mac",
+      "Download for Windows",
+      "Download Arc"
+    ],
+    "footer_tagline": null
+  }
+}

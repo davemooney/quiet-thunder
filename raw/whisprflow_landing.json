@@ -1,0 +1,38 @@
+{
+  "brand": "WhisprFlow",
+  "tier": "direct",
+  "url": "https://wisprflow.ai/",
+  "fetched_at": "2026-03-18T15:50:01.785893+00:00",
+  "extraction_failed": false,
+  "js_heavy": false,
+  "elements": {
+    "title": "Wispr Flow | Effortless Voice Dictation",
+    "meta_description": null,
+    "og_description": null,
+    "h1": "Don't type, just speak",
+    "hero_subheadline": "The voice-to-text AI that turns speech into clear, polished writing in every app.",
+    "h2s": [
+      "Write faster in all your apps, on any device",
+      "4x faster than typing",
+      "AI Auto Edits",
+      "Flow is made for you",
+      "On-the-go or at your desk",
+      "Love letters to Flow",
+      "Start flowing",
+      "Still not sure that Wispr Flow is right for you?"
+    ],
+    "ctas": [
+      "Download for free",
+      "Download now",
+      "Download for iPhone",
+      "Download for Android",
+      "Try Flow",
+      "Watch in action",
+      "Learn more",
+      "Ask ChatGPT",
+      "Ask Claude",
+      "Ask Perplexity"
+    ],
+    "footer_tagline": null
+  }
+}

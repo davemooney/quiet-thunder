@@ -1,0 +1,39 @@
+{
+  "brand": "Raycast",
+  "tier": "adjacent",
+  "url": "https://raycast.com",
+  "fetched_at": "2026-03-18T15:50:01.785893+00:00",
+  "extraction_failed": false,
+  "js_heavy": true,
+  "elements": {
+    "title": "Raycast - Your shortcut to everything",
+    "meta_description": "A collection of powerful productivity tools all within an extendable launcher.",
+    "og_description": "A collection of powerful productivity tools all within an extendable launcher.",
+    "h1": "Your shortcut to everything.",
+    "hero_subheadline": "A collection of powerful productivity tools all within an extendable launcher. Fast, ergonomic and reliable.",
+    "h2s": [
+      "It's not about saving time.",
+      "There's an extension for that.",
+      "Your Mac just got smarter.",
+      "Built for professionals like you.",
+      "Don't repeat yourself.",
+      "What else can Raycast do?",
+      "Stay in the loop.",
+      "Build the perfect tools.",
+      "Take the short way."
+    ],
+    "ctas": [
+      "Download for Mac",
+      "Download for Windows (beta)",
+      "More about AI",
+      "Browse the store",
+      "Browse thousands more",
+      "Join waitlist",
+      "Join",
+      "Follow",
+      "Get started",
+      "Log in"
+    ],
+    "footer_tagline": null
+  }
+}

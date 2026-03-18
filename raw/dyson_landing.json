@@ -1,0 +1,19 @@
+{
+  "brand": "Dyson",
+  "tier": "adjacent",
+  "url": "https://dyson.com",
+  "fetched_at": "2026-03-18T15:50:01.785893+00:00",
+  "extraction_failed": true,
+  "js_heavy": true,
+  "elements": {
+    "title": null,
+    "meta_description": null,
+    "og_description": null,
+    "h1": null,
+    "hero_subheadline": null,
+    "h2s": [],
+    "ctas": [],
+    "footer_tagline": null
+  },
+  "error": "Timeout - JS-heavy page did not respond within 60s"
+}
