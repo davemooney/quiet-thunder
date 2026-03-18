@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hushmark — Your voice stays yours.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=Space+Mono:wght@400;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           HUSHMARK LANDING PAGE
+           Voiceprint Ridges concept — Warm Cream
+           Self-contained, production-quality
+           ============================================ */
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --dark-base: #161616;
+            --surface-1: #1C1C1C;
+            --surface-2: #232323;
+            --surface-3: #2A2A2A;
+            --border: #2E2E2E;
+            --warm-cream: #E8E0D4;
+            --soft-cream: #C9BFB0;
+            --deep-warm: #3A3632;
+            --lightest: #F5F0EA;
+            --text-primary: #E8E6E3;
+            --text-secondary: #9B9895;
+            --text-tertiary: #5E5B58;
+
+            --font-heading: 'Instrument Serif', serif;
+            --font-body: 'DM Sans', sans-serif;
+            --font-mono: 'Space Mono', monospace;
+            --font-wordmark: 'Fraunces', serif;
+
+            --max-width: 1080px;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+        }
+
+        html {
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--dark-base);
+            color: var(--text-primary);
+            line-height: 1.65;
+            overflow-x: hidden;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 0 40px;
+            height: 64px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(22, 22, 22, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-icon svg {
+            display: block;
+        }
+
+        .nav-wordmark {
+            font-family: var(--font-wordmark);
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--text-primary);
+            letter-spacing: 0.3px;
+        }
+
+        .nav-wordmark .h-letter {
+            font-size: 23px;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav-link {
+            font-family: var(--font-body);
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: var(--text-primary);
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            background: var(--warm-cream);
+            color: var(--dark-base);
+            font-family: var(--font-body);
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-primary:hover {
+            background: var(--lightest);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            background: transparent;
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: 14px;
+            font-weight: 400;
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--text-tertiary);
+            background: var(--surface-1);
+        }
+
+        /* ===== LAYOUT ===== */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .section {
+            padding: 120px 0;
+        }
+
+        .section-label {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            font-weight: 400;
+            color: var(--soft-cream);
+            margin-bottom: 24px;
+            letter-spacing: 0.5px;
+        }
+
+        .section-heading {
+            font-family: var(--font-heading);
+            font-weight: 400;
+            color: var(--lightest);
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+
+        .section-heading-lg {
+            font-size: 36px;
+        }
+
+        .section-body {
+            font-family: var(--font-body);
+            font-size: 17px;
+            font-weight: 300;
+            color: var(--text-secondary);
+            line-height: 1.75;
+            max-width: 680px;
+        }
+
+        .section-divider {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 0;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 40px 80px;
+        }
+
+        .hero-heading {
+            font-family: var(--font-heading);
+            font-size: 60px;
+            font-weight: 400;
+            color: var(--lightest);
+            line-height: 1.15;
+            margin-bottom: 28px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-sub {
+            font-family: var(--font-body);
+            font-size: 18px;
+            font-weight: 300;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto 44px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+
+        .hero-meta {
+            font-family: var(--font-body);
+            font-size: 13px;
+            color: var(--text-tertiary);
+            letter-spacing: 0.3px;
+        }
+
+        /* ===== PROMISE (01) ===== */
+        .promise {
+            background: var(--dark-base);
+        }
+
+        /* ===== INTELLIGENCE (02) ===== */
+        .intelligence {
+            background: var(--surface-1);
+        }
+
+        .mockup-card {
+            margin-top: 48px;
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            max-width: 600px;
+        }
+
+        .mockup-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .mockup-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--text-tertiary);
+        }
+
+        .mockup-dot.active {
+            background: var(--warm-cream);
+        }
+
+        .mockup-label {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-left: 8px;
+        }
+
+        .autocue-line {
+            padding: 14px 18px;
+            background: var(--surface-3);
+            border-left: 2px solid var(--warm-cream);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            margin-bottom: 10px;
+            font-family: var(--font-body);
+            font-size: 14px;
+            color: var(--text-primary);
+            line-height: 1.5;
+        }
+
+        .autocue-line .cue-tag {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--warm-cream);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .autocue-line:last-child {
+            margin-bottom: 0;
+        }
+
+        .autocue-line.dim {
+            border-left-color: var(--text-tertiary);
+            opacity: 0.5;
+        }
+
+        /* ===== VAULT (03) ===== */
+        .vault {
+            background: var(--dark-base);
+        }
+
+        .search-mockup {
+            margin-top: 48px;
+            background: var(--surface-1);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            max-width: 640px;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 18px;
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            margin-bottom: 20px;
+        }
+
+        .search-icon {
+            color: var(--text-tertiary);
+            font-size: 14px;
+        }
+
+        .search-text {
+            font-family: var(--font-body);
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .search-result {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .search-result:last-child {
+            border-bottom: none;
+        }
+
+        .search-result-meta {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--text-tertiary);
+            margin-bottom: 6px;
+            display: flex;
+            gap: 16px;
+        }
+
+        .search-result-text {
+            font-family: var(--font-body);
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .search-result-text mark {
+            background: rgba(232, 224, 212, 0.15);
+            color: var(--warm-cream);
+            padding: 1px 3px;
+            border-radius: 2px;
+        }
+
+        /* ===== RECEIPT (04) ===== */
+        .receipt {
+            background: var(--surface-1);
+        }
+
+        .pricing-table {
+            margin-top: 40px;
+            width: 100%;
+            max-width: 720px;
+            border-collapse: collapse;
+        }
+
+        .pricing-table th,
+        .pricing-table td {
+            padding: 16px 20px;
+            text-align: left;
+            font-family: var(--font-body);
+            font-size: 14px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .pricing-table th {
+            font-weight: 500;
+            color: var(--text-secondary);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .pricing-table td {
+            color: var(--text-secondary);
+        }
+
+        .pricing-table td.highlight {
+            color: var(--warm-cream);
+            font-weight: 500;
+        }
+
+        .pricing-table .row-label {
+            color: var(--text-tertiary);
+            font-family: var(--font-mono);
+            font-size: 13px;
+        }
+
+        .pricing-table .markup-high {
+            color: #c97a7a;
+        }
+
+        .pricing-table .markup-low {
+            color: var(--warm-cream);
+        }
+
+        .receipt-note {
+            margin-top: 32px;
+            font-family: var(--font-body);
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.75;
+            max-width: 600px;
+            font-weight: 300;
+        }
+
+        /* ===== CAPTURE (05) ===== */
+        .capture {
+            background: var(--dark-base);
+        }
+
+        /* ===== BUILT FOR (06) ===== */
+        .built-for {
+            background: var(--surface-1);
+        }
+
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 48px;
+            max-width: 720px;
+        }
+
+        .audience-card {
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 28px;
+            transition: border-color 0.2s;
+        }
+
+        .audience-card:hover {
+            border-color: var(--deep-warm);
+        }
+
+        .audience-card-title {
+            font-family: var(--font-heading);
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--lightest);
+            margin-bottom: 10px;
+        }
+
+        .audience-card-desc {
+            font-family: var(--font-body);
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.65;
+            font-weight: 300;
+        }
+
+        /* ===== FEATURES GRID ===== */
+        .features {
+            background: var(--dark-base);
+        }
+
+        .features-heading {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .feature-card {
+            background: var(--surface-1);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 28px;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--deep-warm);
+            transform: translateY(-2px);
+        }
+
+        .feature-icon {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--surface-3);
+            border-radius: var(--radius-sm);
+            margin-bottom: 18px;
+            color: var(--warm-cream);
+            font-size: 16px;
+        }
+
+        .feature-title {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 400;
+            color: var(--lightest);
+            margin-bottom: 8px;
+        }
+
+        .feature-desc {
+            font-family: var(--font-body);
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.65;
+            font-weight: 300;
+        }
+
+        /* ===== PRICING ===== */
+        .pricing {
+            background: var(--surface-1);
+        }
+
+        .pricing-heading {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 780px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 40px 32px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--deep-warm);
+            position: relative;
+        }
+
+        .pricing-card.featured::before {
+            content: 'Most popular';
+            position: absolute;
+            top: -12px;
+            left: 32px;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--dark-base);
+            background: var(--warm-cream);
+            padding: 4px 12px;
+            border-radius: 4px;
+        }
+
+        .pricing-card-name {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 400;
+            color: var(--lightest);
+            margin-bottom: 8px;
+        }
+
+        .pricing-card-price {
+            font-family: var(--font-wordmark);
+            font-size: 40px;
+            font-weight: 300;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .pricing-card-price span {
+            font-family: var(--font-body);
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--text-tertiary);
+        }
+
+        .pricing-card-desc {
+            font-family: var(--font-body);
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 28px;
+            line-height: 1.5;
+            font-weight: 300;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 32px;
+            flex: 1;
+        }
+
+        .pricing-features li {
+            font-family: var(--font-body);
+            font-size: 14px;
+            color: var(--text-secondary);
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 300;
+        }
+
+        .pricing-features li::before {
+            content: '';
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--warm-cream);
+            flex-shrink: 0;
+        }
+
+        .pricing-card .btn-primary,
+        .pricing-card .btn-secondary {
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* ===== FINAL CTA ===== */
+        .final-cta {
+            background: var(--dark-base);
+            text-align: center;
+            padding: 140px 0;
+        }
+
+        .final-cta-heading {
+            font-family: var(--font-heading);
+            font-style: italic;
+            font-size: 44px;
+            font-weight: 400;
+            color: var(--lightest);
+            margin-bottom: 36px;
+            line-height: 1.2;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--surface-1);
+            border-top: 1px solid var(--border);
+            padding: 60px 0;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-wordmark {
+            font-family: var(--font-wordmark);
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--text-primary);
+        }
+
+        .footer-wordmark .h-letter {
+            font-size: 23px;
+        }
+
+        .footer-legal {
+            font-family: var(--font-body);
+            font-size: 12px;
+            color: var(--text-tertiary);
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 48px;
+        }
+
+        .footer-col h4 {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-tertiary);
+            margin-bottom: 16px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col a {
+            font-family: var(--font-body);
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover {
+            color: var(--text-primary);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .nav {
+                padding: 0 20px;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+
+            .hero {
+                padding: 100px 20px 60px;
+            }
+
+            .hero-heading {
+                font-size: 40px;
+            }
+
+            .hero-sub {
+                font-size: 16px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .hero-buttons .btn-primary,
+            .hero-buttons .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .section {
+                padding: 80px 0;
+            }
+
+            .section-heading-lg {
+                font-size: 28px;
+            }
+
+            .audience-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-table {
+                font-size: 12px;
+            }
+
+            .pricing-table th,
+            .pricing-table td {
+                padding: 12px 10px;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .footer-links {
+                gap: 32px;
+            }
+
+            .final-cta-heading {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-heading {
+                font-size: 32px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="nav">
+        <div class="nav-left">
+            <div class="nav-icon">
+                <svg width="32" height="32" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="512" height="512" rx="112" fill="#1C1C1C"/>
+                    <path d="M100 210 C220 185, 340 245, 412 220" stroke="#E8E0D4" stroke-width="28" stroke-linecap="round" fill="none" opacity="0.5"/>
+                    <path d="M100 285 C200 255, 320 320, 412 288" stroke="#F5F0EA" stroke-width="38" stroke-linecap="round" fill="none" opacity="0.9"/>
+                    <path d="M100 350 C240 335, 350 365, 412 352" stroke="#C9BFB0" stroke-width="20" stroke-linecap="round" fill="none" opacity="0.4"/>
+                </svg>
+            </div>
+            <div class="nav-wordmark"><span class="h-letter">H</span>ushmark</div>
+        </div>
+        <div class="nav-right">
+            <a href="#features" class="nav-link">Features</a>
+            <a href="#pricing" class="nav-link">Pricing</a>
+            <a href="#download" class="btn-primary">Download free</a>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <h1 class="hero-heading">Your voice stays yours.</h1>
+        <p class="hero-sub">Hushmark transcribes on your device. Your audio never touches a server. No bots join your call. No cloud sees your words. Just you, your machine, and everything you said — searchable in seconds.</p>
+        <div class="hero-buttons">
+            <a href="#download" class="btn-primary">Download free</a>
+            <a href="#promise" class="btn-secondary">How it works</a>
+        </div>
+        <p class="hero-meta">macOS &middot; Free local transcription forever</p>
+    </section>
+
+    <!-- ===== 01 — THE PROMISE ===== -->
+    <hr class="section-divider">
+    <section id="promise" class="section promise">
+        <div class="container">
+            <div class="section-label">01</div>
+            <h2 class="section-heading section-heading-lg">Your audio never leaves.</h2>
+            <p class="section-body">Other tools upload your voice to process it. Hushmark doesn't. Transcription runs on your machine using on-device AI. There is no server between your voice and your transcript. This isn't a privacy setting. It's the architecture.</p>
+        </div>
+    </section>
+
+    <!-- ===== 02 — THE INTELLIGENCE ===== -->
+    <hr class="section-divider">
+    <section class="section intelligence">
+        <div class="container">
+            <div class="section-label">02</div>
+            <h2 class="section-heading section-heading-lg">An AI strategist in your ear.</h2>
+            <p class="section-body">While you're still in the meeting, Hushmark analyses the live transcript and whispers back: questions to ask, contradictions to probe, action items forming in real time. You glance down. You ask the perfect question. You look like you've been preparing all week.</p>
+
+            <div class="mockup-card">
+                <div class="mockup-header">
+                    <div class="mockup-dot active"></div>
+                    <div class="mockup-dot"></div>
+                    <div class="mockup-dot"></div>
+                    <span class="mockup-label">Autocue — Live</span>
+                </div>
+                <div class="autocue-line">
+                    <span class="cue-tag">Suggested question</span>
+                    "They mentioned Q2 targets shifted — ask what changed since the board review."
+                </div>
+                <div class="autocue-line">
+                    <span class="cue-tag">Contradiction detected</span>
+                    "Timeline doesn't match the roadmap shared on Jan 12. Probe this."
+                </div>
+                <div class="autocue-line dim">
+                    <span class="cue-tag">Action item forming</span>
+                    "Sarah owes revised budget by Friday — confirm."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 03 — THE VAULT ===== -->
+    <hr class="section-divider">
+    <section class="section vault">
+        <div class="container">
+            <div class="section-label">03</div>
+            <h2 class="section-heading section-heading-lg">Every conversation you've had.<br>Searchable in twelve seconds.</h2>
+            <p class="section-body">Hushmark is a vault that compounds. Ask questions across 3,000 recordings. Find what someone said six months ago. Every recording is tagged, timestamped, speaker-labelled, and encrypted. The longer you use it, the more irreplaceable it becomes.</p>
+
+            <div class="search-mockup">
+                <div class="search-bar">
+                    <span class="search-icon">&#x2315;</span>
+                    <span class="search-text">What did Marcus say about the Berlin office lease?</span>
+                </div>
+                <div class="search-result">
+                    <div class="search-result-meta">
+                        <span>Sep 14, 2025</span>
+                        <span>Marcus Hahn</span>
+                        <span>42:18</span>
+                    </div>
+                    <p class="search-result-text">"...the <mark>Berlin office lease</mark> expires in March. We're not renewing. The plan is to go fully remote by Q2 and reinvest the savings into..."</p>
+                </div>
+                <div class="search-result">
+                    <div class="search-result-meta">
+                        <span>Nov 02, 2025</span>
+                        <span>Marcus Hahn</span>
+                        <span>18:45</span>
+                    </div>
+                    <p class="search-result-text">"...actually, I spoke to the landlord about the <mark>Berlin lease</mark>. They offered a 40% reduction. Might be worth reconsidering..."</p>
+                </div>
+                <div class="search-result">
+                    <div class="search-result-meta">
+                        <span>Jan 08, 2026</span>
+                        <span>Marcus Hahn, Lisa Becker</span>
+                        <span>1:04:22</span>
+                    </div>
+                    <p class="search-result-text">"...Lisa asked about <mark>the Berlin situation</mark>. Marcus confirmed we're signing the reduced <mark>lease</mark> for 18 months. CFO approved on Thursday..."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 04 — THE RECEIPT ===== -->
+    <hr class="section-divider">
+    <section class="section receipt">
+        <div class="container">
+            <div class="section-label">04</div>
+            <h2 class="section-heading section-heading-lg">We'll show you what transcription<br>actually costs.</h2>
+
+            <table class="pricing-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Wholesale</th>
+                        <th>Otter.ai</th>
+                        <th>Fireflies</th>
+                        <th>Hushmark</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="row-label">1 hour</td>
+                        <td>€0.36</td>
+                        <td>€4.17</td>
+                        <td>€3.33</td>
+                        <td class="highlight">€0.40</td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Markup</td>
+                        <td>—</td>
+                        <td class="markup-high">1,058%</td>
+                        <td class="markup-high">825%</td>
+                        <td class="markup-low">10%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p class="receipt-note">Local transcription is free. Cloud credits at cost plus 10%. Here is the math. That is the entire business model.</p>
+        </div>
+    </section>
+
+    <!-- ===== 05 — THE CAPTURE ===== -->
+    <hr class="section-divider">
+    <section class="section capture">
+        <div class="container">
+            <div class="section-label">05</div>
+            <h2 class="section-heading section-heading-lg">No bot joins your call.</h2>
+            <p class="section-body">Hushmark captures audio through your system's audio layer — not by joining as a participant. No one on the call knows you're recording. No awkward "Hushmark Bot has joined the meeting" notification. No permissions to request. You open Hushmark, click record, and it listens to exactly what you hear. Zoom, Google Meet, Teams, FaceTime, phone calls, podcasts, lectures. If sound leaves your speaker, Hushmark can transcribe it.</p>
+        </div>
+    </section>
+
+    <!-- ===== 06 — BUILT FOR ===== -->
+    <hr class="section-divider">
+    <section class="section built-for">
+        <div class="container">
+            <div class="section-label">06</div>
+            <h2 class="section-heading section-heading-lg">People with the most to protect.</h2>
+            <p class="section-body">Hushmark was designed for professionals whose conversations carry weight — where a misquoted sentence can move markets, break trust, or compromise a case.</p>
+
+            <div class="audience-grid">
+                <div class="audience-card">
+                    <h3 class="audience-card-title">Journalists</h3>
+                    <p class="audience-card-desc">Source protection is non-negotiable. Hushmark keeps recordings on your device, encrypted, never cloud-synced. When the story matters, the transcript stays yours.</p>
+                </div>
+                <div class="audience-card">
+                    <h3 class="audience-card-title">Lawyers</h3>
+                    <p class="audience-card-desc">Attorney-client privilege requires tools that respect confidentiality by design. No third-party servers. No data-sharing clauses. Full local control.</p>
+                </div>
+                <div class="audience-card">
+                    <h3 class="audience-card-title">Researchers</h3>
+                    <p class="audience-card-desc">Interview transcripts are research data. IRB compliance is simpler when your transcription tool never transmits participant audio to an external server.</p>
+                </div>
+                <div class="audience-card">
+                    <h3 class="audience-card-title">Executives</h3>
+                    <p class="audience-card-desc">Board conversations, M&A discussions, and strategy calls belong to you. Hushmark ensures sensitive discussions never appear in a vendor's training data.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FEATURES GRID ===== -->
+    <hr class="section-divider">
+    <section id="features" class="section features">
+        <div class="container">
+            <div class="features-heading">
+                <div class="section-label" style="text-align:center;">07</div>
+                <h2 class="section-heading section-heading-lg">Everything you need. Nothing you don't.</h2>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">&#9688;</div>
+                    <h3 class="feature-title">On-device transcription</h3>
+                    <p class="feature-desc">Powered by Whisper, running entirely on your Mac. No internet required. No audio ever uploaded.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#9672;</div>
+                    <h3 class="feature-title">Live Autocue</h3>
+                    <p class="feature-desc">Real-time AI suggestions while you're still in the meeting. Questions, contradictions, action items — surfaced silently.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#9670;</div>
+                    <h3 class="feature-title">Speaker identification</h3>
+                    <p class="feature-desc">Hushmark learns voices over time and labels who said what, automatically. Review by speaker, not by timestamp.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#9711;</div>
+                    <h3 class="feature-title">Invisible capture</h3>
+                    <p class="feature-desc">Records through your system's audio layer. No bot joins your call. No one knows. Works with every platform.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#9674;</div>
+                    <h3 class="feature-title">Encrypted vault</h3>
+                    <p class="feature-desc">Every transcript stored with AES-256 encryption. Search across thousands of conversations in seconds.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#9656;</div>
+                    <h3 class="feature-title">Smart summaries</h3>
+                    <p class="feature-desc">One-click meeting summaries with action items, decisions, and key quotes. Share a digest, keep the full recording.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#9635;</div>
+                    <h3 class="feature-title">Multi-language</h3>
+                    <p class="feature-desc">Transcribe in 99 languages with Whisper. Translate between any pair. All processed locally on your device.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#9678;</div>
+                    <h3 class="feature-title">Cloud credits (optional)</h3>
+                    <p class="feature-desc">Need cloud-grade accuracy? Use credits at wholesale cost plus 10%. No subscription. Pay only for what you use.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">&#9702;</div>
+                    <h3 class="feature-title">Export anywhere</h3>
+                    <p class="feature-desc">Markdown, PDF, SRT, TXT, JSON. Copy to Notion, Obsidian, or your CRM. Your transcripts, your format.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PRICING ===== -->
+    <hr class="section-divider">
+    <section id="pricing" class="section pricing">
+        <div class="container">
+            <div class="pricing-heading">
+                <div class="section-label" style="text-align:center;">08</div>
+                <h2 class="section-heading section-heading-lg">Simple, honest pricing.</h2>
+                <p class="section-body" style="margin:16px auto 0;text-align:center;">Local transcription is free forever. Cloud features priced at cost.</p>
+            </div>
+
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <div class="pricing-card-name">Free</div>
+                    <div class="pricing-card-price">€0 <span>/ forever</span></div>
+                    <p class="pricing-card-desc">Everything you need for private, on-device transcription.</p>
+                    <ul class="pricing-features">
+                        <li>Unlimited local transcription</li>
+                        <li>On-device Whisper AI</li>
+                        <li>Speaker identification</li>
+                        <li>Encrypted local vault</li>
+                        <li>Full search across transcripts</li>
+                        <li>Export to Markdown, PDF, TXT</li>
+                        <li>Invisible audio capture</li>
+                    </ul>
+                    <a href="#download" class="btn-secondary">Download free</a>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="pricing-card-name">Pro</div>
+                    <div class="pricing-card-price">€9.99 <span>/ month</span></div>
+                    <p class="pricing-card-desc">Cloud intelligence at wholesale cost. Cancel anytime.</p>
+                    <ul class="pricing-features">
+                        <li>Everything in Free</li>
+                        <li>Live Autocue (AI suggestions)</li>
+                        <li>Cloud transcription credits at cost + 10%</li>
+                        <li>Smart summaries &amp; action items</li>
+                        <li>Multi-language translation</li>
+                        <li>Priority model updates</li>
+                        <li>Ask questions across your vault</li>
+                    </ul>
+                    <a href="#download" class="btn-primary">Start Pro</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FINAL CTA ===== -->
+    <hr class="section-divider">
+    <section id="download" class="final-cta">
+        <div class="container">
+            <h2 class="final-cta-heading">Quiet tools do the best work.</h2>
+            <a href="#" class="btn-primary" style="font-size:16px;padding:14px 36px;">Download Hushmark free</a>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <div class="footer-wordmark"><span class="h-letter">H</span>ushmark</div>
+                    <p class="footer-legal">
+                        Ultramoon GmbH &middot; Berlin, Germany<br>
+                        &copy; 2026 Ultramoon GmbH. All rights reserved.
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>Product</h4>
+                        <ul>
+                            <li><a href="#features">Features</a></li>
+                            <li><a href="#pricing">Pricing</a></li>
+                            <li><a href="#download">Download</a></li>
+                            <li><a href="#">Changelog</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="#">Privacy</a></li>
+                            <li><a href="#">Terms</a></li>
+                            <li><a href="#">Security</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
