@@ -1,0 +1,9 @@
+{
+  "brand": "Aiko",
+  "source": "appstore",
+  "platform": "iOS",
+  "fetched_at": "2026-03-18T15:45:43Z",
+  "found": true,
+  "trackName": "Aiko",
+  "description_first_500": "High-quality on-device transcription. Easily convert speech to text from meetings, lectures, and more.\n\nThe transcription is powered by OpenAI's Whisper running locally on your device. Nothing leaves your device.\n\nYou can export the transcription as subtitles too. It has a word-replacement feature to let you automatically fix common mistakes.\n\nAiko favors accuracy over speed.\n\nIt does not do live transcription while recording.\nIt does not currently have speaker detection.\n\n\nTry the trial first. "
+}
